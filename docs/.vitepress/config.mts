@@ -15,6 +15,7 @@ export default defineConfig({
       { text: '开始使用', link: '/guide/getting-started' },
       { text: '平台架构', link: '/guide/architecture' },
       { text: '服务目录', link: '/services/' },
+      { text: '线上入口', link: '/services/deployed' },
       { text: '接口索引', link: '/api/' },
       { text: '部署运维', link: '/operations/deployment' }
     ],
@@ -29,6 +30,9 @@ export default defineConfig({
       ] },
       { text: '服务与接口', items: [
         { text: '服务目录', link: '/services/' },
+        { text: '已部署服务与公网入口', link: '/services/deployed' },
+        { text: 'Science Community 与社区管理', link: '/services/science-community' },
+        { text: '平台门户与管理后台', link: '/services/portal' },
         { text: 'API 入口与覆盖范围', link: '/api/' },
         { text: '统一账号与授权', link: '/api/generated/account' },
         { text: '目标与阶段成果', link: '/api/generated/target' },

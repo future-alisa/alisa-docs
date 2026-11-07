@@ -11,7 +11,7 @@ npm run build
 
 构建输出是 `docs/.vitepress/dist`。当前服务器发布配置位于 `deploy/production`，Argo CD Application 定义位于 `deploy/argocd/application.yaml`；通用占位示例仍保留在 `deploy/examples`。
 
-目标入口为 `https://alisa.vip.cpolar.cn/docs/`。应用 `alisa-docs` 使用独立 Deployment、Service 和 `/docs` HTTPRoute，复用当前命名空间中已有的 Registry Secret。它是静态公开文档，不使用业务 JWT_SECRET。实际可用性以 Argo CD 状态和入口验证为准。
+目标入口为 `https://alisa.vip.cpolar.cn/docs/`。应用 `alisa-docs` 使用独立 Deployment、Service 和 `/docs` HTTPRoute，使用当前命名空间中的专用 Registry Secret `alisa-docs-registry-auth`，其真实认证值由 Argo CD API 注入并受差异忽略策略保护。它是静态公开文档，不使用业务 JWT_SECRET。实际可用性以 Argo CD 状态和入口验证为准。
 
 ### 更新线上文档
 
@@ -29,6 +29,10 @@ git push origin main
 在 Argo CD 对 `alisa-docs` 执行完整 Sync：前置 Job 下载固定提交，Node 构建静态文件，Kaniko 使用固定摘要的 NGINX 运行时推送镜像，随后更新站点资源。构建缓存卷保留 npm 下载缓存，默认不启用自动同步。完整步骤见仓库的 [发布说明](https://github.com/future-alisa/alisa-docs/blob/main/deploy/README.md)。
 
 站点部署在子路径时，构建设置 `DOCS_BASE=/docs/`，入口代理去掉 `/docs` 后送入容器，页面生成的资源 URL 保留 `/docs/`；根路径部署使用 `/`。
+
+新文档镜像的上传与节点拉取均使用 `registry.kind.internal:5000` 内网 Registry，构建任务使用节点 DNS 解析内网名称；官方 NGINX 基础镜像仍按固定摘要从官方源读取。内网仓库现有自签 TLS 的 Kaniko 例外仅限该仓库，其他镜像源保持证书校验。
+
+本次实际上线的应用、外网 URL 和管理后台见 [已部署服务与公网入口](/services/deployed)。
 
 ## 公共网关的现有发布流程
 

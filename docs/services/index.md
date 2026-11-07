@@ -1,6 +1,6 @@
 # 服务目录
 
-下面是当前文档覆盖的三个后端项目。端口来自源码默认值，运行环境可以通过配置覆盖；条目存在不代表该服务已在当前环境部署。
+此页覆盖业务后端、Science Community 用户站、平台门户前后端和文档站。端口来自源码默认值或对应服务配置，运行环境可以覆盖；源码条目存在不代表已部署。当前环境的部署清单、用户站和管理后台地址见 [已部署服务与公网入口](/services/deployed)。
 
 <ServiceDirectory />
 
@@ -18,6 +18,6 @@
 
 ## 其他相关项目
 
-[alisa-portal](https://github.com/future-alisa/alisa-portal) 提供平台入口与管理界面。本期先链接该项目，不把它的 API/web 部署状态并入上面的业务服务清单。
+[alisa-portal](https://github.com/future-alisa/alisa-portal) 提供已上线的 [平台门户与管理后台](/services/portal)。[Science Community](/services/science-community) 的用户站和社区管理也在当前服务目录中；具体部署状态以 [环境核验记录](/services/deployed) 为准。
 
 源码、协议定义和环境配置各有归属，参见[架构与项目边界](/guide/architecture)。

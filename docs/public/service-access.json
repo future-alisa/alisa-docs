@@ -1,0 +1,125 @@
+{
+  "verifiedOn": "2026-11-07",
+  "description": "环境入口快照，不是实时监控；目录不包含凭据。",
+  "services": [
+    {
+      "name": "Alisa Portal · 平台管理",
+      "category": "管理后台",
+      "tenant": "platform",
+      "url": "https://alisa.vip.cpolar.cn/",
+      "description": "云资源门户与服务目录；管理操作需要在连接设置中填写门户管理员令牌，令牌不写入文档。"
+    },
+    {
+      "name": "Alisa Docs",
+      "category": "文档",
+      "tenant": "platform",
+      "url": "https://alisa.vip.cpolar.cn/docs/",
+      "description": "平台架构、中间件职责、接口、开发接入与部署指南；静态公开文档，2026-11-07 已验证访问。"
+    },
+    {
+      "name": "Science Community",
+      "category": "业务应用",
+      "tenant": "platform",
+      "url": "https://alisa.vip.cpolar.cn/science",
+      "description": "学习社区用户站：社区、资料、频道讨论；Next.js /science 子路径，2026-11-07 已验证访问。"
+    },
+    {
+      "name": "Science Community · 社区管理",
+      "category": "管理后台",
+      "tenant": "platform",
+      "url": "https://alisa.vip.cpolar.cn/science/community/settings",
+      "description": "社区成员、角色、频道成员和资料管理。需要登录；可选择自己加入的社区，拥有者或管理员才有对应管理权限。"
+    },
+    {
+      "name": "Science Community API",
+      "category": "业务 API",
+      "tenant": "platform",
+      "url": "https://alisa.vip.cpolar.cn/science/community-api/community/getAll",
+      "description": "社区 API 的公开列表探测；浏览器请求经 /science/community-api 代理到 community:9091/community，并非独立管理网页。"
+    },
+    {
+      "name": "Science Chat · 连接探测",
+      "category": "业务 API",
+      "tenant": "platform",
+      "url": "https://alisa.vip.cpolar.cn/science-chat/ws/info",
+      "description": "transfer-service 的 SockJS 探测接口；客户端连接 /science-chat/ws。此 JSON 地址不是聊天界面，完整消息收发仍需登录联调。"
+    },
+    {
+      "name": "Alisa Gateway / 统一账号",
+      "category": "网关",
+      "tenant": "platform",
+      "url": "https://alisa.vip.cpolar.cn/alisa-gateway/api/v1/user/health",
+      "description": "公共 API 基址 /alisa-gateway；此链接检查统一账号服务健康。Nacos 发现后端服务，外部客户端经网关调用；健康返回 UP 不代表全部业务可用。"
+    },
+    {
+      "name": "Alisa Portal API",
+      "category": "平台 API",
+      "tenant": "platform",
+      "url": "https://alisa.vip.cpolar.cn/api/health",
+      "description": "门户后端健康探测；服务目录 /api/state 及管理写入需要门户管理员令牌，不使用业务 JWT。"
+    },
+    {
+      "name": "Traefik",
+      "category": "网关",
+      "tenant": "platform",
+      "url": "https://alisa.vip.cpolar.cn/dashboard/",
+      "description": "集群入口与 HTTPRoute 路由；Dashboard 外网入口已验证返回 HTTP 401，需要现有访问认证。"
+    },
+    {
+      "name": "Argo CD",
+      "category": "部署",
+      "tenant": "platform",
+      "url": "https://alisa.vip.cpolar.cn/argocd/",
+      "description": "GitOps 应用、同步、版本及 Pod 状态管理；需要登录。包含 alisa-infra、alisa-docs、alisa-portal 和 science-community。"
+    },
+    {
+      "name": "Nacos",
+      "category": "配置中心",
+      "tenant": "platform",
+      "url": "https://alisa.vip.cpolar.cn/nacos/",
+      "description": "服务发现与动态配置管理；控制台入口可达，管理操作需要登录。网页可达不代表 SDK 8848/9848 连通。"
+    },
+    {
+      "name": "Registry",
+      "category": "镜像仓库",
+      "tenant": "platform",
+      "url": "https://alisa-registry.cpolar.top/v2/",
+      "description": "公网 OCI Registry API，非管理网页；需要认证。新文档发布的上传与拉取走 registry.kind.internal:5000 内网入口。"
+    },
+    {
+      "name": "SeaweedFS",
+      "category": "存储",
+      "tenant": "platform",
+      "url": "https://alisa.vip.cpolar.cn/fs/",
+      "description": "文件浏览入口；当前匿名访问返回 HTTP 401，需要现有访问认证。对象存储协议需按客户端与签名规则配置。"
+    },
+    {
+      "name": "SeaweedFS Admin",
+      "category": "管理后台",
+      "tenant": "platform",
+      "url": "https://alisa.vip.cpolar.cn/fs-admin/",
+      "description": "SeaweedFS 管理控制台；已验证跳转到登录页，需要现有管理员账号。"
+    },
+    {
+      "name": "Gitea",
+      "category": "开发工具",
+      "tenant": "platform",
+      "url": "https://gitea-alisa.cpolar.top/",
+      "description": "代码仓库与协作入口，地址来自环境记录；2026-11-07 本次检查超时，当前可用性待确认。"
+    },
+    {
+      "name": "PostgreSQL",
+      "category": "数据库",
+      "tenant": "platform",
+      "url": "",
+      "description": "关系型数据存储；未登记可浏览的公网管理界面，不将数据库 TCP 连接冒充 HTTP 链接。"
+    },
+    {
+      "name": "MySQL",
+      "category": "数据库",
+      "tenant": "platform",
+      "url": "",
+      "description": "业务数据库；数据库连接使用环境配置，不在门户中填写账号、密码或伪造 HTTP 管理入口。"
+    }
+  ]
+}

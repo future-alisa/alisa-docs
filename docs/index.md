@@ -16,6 +16,9 @@ hero:
       text: 查找接口
       link: /api/
 features:
+  - title: 访问线上服务
+    details: 打开学习社区、社区管理、平台门户和基础设施后台，核对实际部署与入口。
+    link: /services/deployed
   - title: 理解平台
     details: 区分入口、业务服务、中间件和交付控制面，按步骤接入现有能力。
     link: /guide/architecture

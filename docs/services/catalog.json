@@ -78,5 +78,51 @@
       "/ws/**"
     ],
     "doc": "/api/generated/transfer"
+  },
+  {
+    "name": "science-web",
+    "title": "学习社区用户站与管理",
+    "project": "ScienceCommunity",
+    "port": 3000,
+    "description": "社区用户站、社区管理和同源 API 代理，已部署在 /science。",
+    "paths": [
+      "/science/**",
+      "/science/community/settings"
+    ],
+    "doc": "/services/science-community"
+  },
+  {
+    "name": "alisa-portal-web",
+    "title": "平台门户与管理后台",
+    "project": "alisa-portal",
+    "port": 3000,
+    "description": "平台工作台、服务入口、租户与部署申请管理界面。",
+    "paths": [
+      "/",
+      "/api/**（同源代理）"
+    ],
+    "doc": "/services/portal"
+  },
+  {
+    "name": "alisa-portal-api",
+    "title": "门户后端",
+    "project": "alisa-portal",
+    "port": 8080,
+    "description": "门户目录、租户、配额和操作记录；独立管理员令牌与持久化存储。",
+    "paths": [
+      "/api/**"
+    ],
+    "doc": "/services/portal"
+  },
+  {
+    "name": "alisa-docs",
+    "title": "平台开发文档",
+    "project": "alisa-docs",
+    "port": 8080,
+    "description": "公开架构、服务、接口和开发运维文档。",
+    "paths": [
+      "/docs/**"
+    ],
+    "doc": "/services/deployed"
   }
 ]
