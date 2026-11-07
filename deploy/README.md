@@ -22,7 +22,7 @@ git push origin main
 
 ## 发布链路
 
-1. PreSync PVC 保留 npm 下载缓存与构建工作区。
+1. 普通 PVC 保留 npm 下载缓存与构建工作区，与 Sync 构建 Job 位于同一同步批次（wave -10），支持延迟绑定存储。
 2. 构建 Job 从 GitHub 官方 codeload 下载固定提交归档。
 3. Node 22 执行 npm ci 和带 `DOCS_BASE=/docs/` 的静态构建。CI 中另行执行 Python 索引生成器测试。
 4. Kaniko 将预构建静态文件打入固定摘要的 NGINX 非 root 运行时，并推送到私有 Registry。
