@@ -4,9 +4,7 @@ metadata:
   name: alisa-docs-build-cache
   namespace: @@namespace@@
   annotations:
-    argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/sync-wave: "-20"
-    argocd.argoproj.io/hook-delete-policy: HookFailed
 spec:
   accessModes: [ReadWriteOnce]
   resources:
@@ -19,8 +17,8 @@ metadata:
   name: alisa-docs-build-@@shortRevision@@
   namespace: @@namespace@@
   annotations:
-    argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/sync-wave: "-20"
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/sync-wave: "-10"
     argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
 spec:
   backoffLimit: 0
