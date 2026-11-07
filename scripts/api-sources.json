@@ -1,0 +1,56 @@
+[
+  {
+    "id": "account",
+    "title": "统一账号与授权",
+    "service": "user-service",
+    "repo": "alisa-cloud",
+    "remote": "https://github.com/future-alisa/alisa-cloud",
+    "module": "alisa-user",
+    "context": ""
+  },
+  {
+    "id": "target",
+    "title": "目标与阶段成果",
+    "service": "target-service",
+    "repo": "SmallOKR",
+    "remote": "https://github.com/sunyuboalisa/SmallOKR",
+    "module": "smallokr_server/targetservice",
+    "context": "/target-service"
+  },
+  {
+    "id": "todo",
+    "title": "待办",
+    "service": "todo-service",
+    "repo": "SmallOKR",
+    "remote": "https://github.com/sunyuboalisa/SmallOKR",
+    "module": "smallokr_server/todoservice",
+    "context": ""
+  },
+  {
+    "id": "trace",
+    "title": "跟踪",
+    "service": "trace-service",
+    "repo": "SmallOKR",
+    "remote": "https://github.com/sunyuboalisa/SmallOKR",
+    "module": "smallokr_server/traceservice",
+    "context": ""
+  },
+  {
+    "id": "community",
+    "title": "社区",
+    "service": "community-service",
+    "repo": "ScienceCommunity",
+    "remote": "https://github.com/future-alisa/ScienceCommunity",
+    "module": "science_community/community_service",
+    "context": "/community"
+  },
+  {
+    "id": "transfer",
+    "title": "聊天与在线状态",
+    "service": "transfer-service",
+    "repo": "ScienceCommunity",
+    "remote": "https://github.com/future-alisa/ScienceCommunity",
+    "module": "science_community/transfer_service",
+    "context": ""
+  }
+]

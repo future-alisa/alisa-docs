@@ -1,0 +1,1830 @@
+{
+  "schemaVersion": 1,
+  "kind": "spring-controller-source-index",
+  "sources": [
+    {
+      "service": "user-service",
+      "repository": "https://github.com/future-alisa/alisa-cloud",
+      "revision": "03f0644ea91b6df262425b62000398e40a7d4fbc",
+      "localChanges": false,
+      "endpointCount": 69
+    },
+    {
+      "service": "target-service",
+      "repository": "https://github.com/sunyuboalisa/SmallOKR",
+      "revision": "bf29dd6ddc868c8d94b2bba5d32c179065efce44",
+      "localChanges": false,
+      "endpointCount": 9
+    },
+    {
+      "service": "todo-service",
+      "repository": "https://github.com/sunyuboalisa/SmallOKR",
+      "revision": "bf29dd6ddc868c8d94b2bba5d32c179065efce44",
+      "localChanges": false,
+      "endpointCount": 10
+    },
+    {
+      "service": "trace-service",
+      "repository": "https://github.com/sunyuboalisa/SmallOKR",
+      "revision": "bf29dd6ddc868c8d94b2bba5d32c179065efce44",
+      "localChanges": false,
+      "endpointCount": 1
+    },
+    {
+      "service": "community-service",
+      "repository": "https://github.com/future-alisa/ScienceCommunity",
+      "revision": "d10e11afb91e40a99457b91958a382b4015ef1e9",
+      "localChanges": true,
+      "endpointCount": 87
+    },
+    {
+      "service": "transfer-service",
+      "repository": "https://github.com/future-alisa/ScienceCommunity",
+      "revision": "d10e11afb91e40a99457b91958a382b4015ef1e9",
+      "localChanges": false,
+      "endpointCount": 2
+    }
+  ],
+  "endpoints": [
+    {
+      "controller": "AuthorizationController",
+      "handler": "roles",
+      "httpMethod": "GET",
+      "path": "/api/v1/authorization/applications/{app}/roles",
+      "condition": "alisa.authorization.enabled=true",
+      "line": 69,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/controller/AuthorizationController.java#L69",
+      "service": "user-service"
+    },
+    {
+      "controller": "AuthorizationController",
+      "handler": "deleteRole",
+      "httpMethod": "DELETE",
+      "path": "/api/v1/authorization/applications/{app}/roles/{role}",
+      "condition": "alisa.authorization.enabled=true",
+      "line": 82,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/controller/AuthorizationController.java#L82",
+      "service": "user-service"
+    },
+    {
+      "controller": "AuthorizationController",
+      "handler": "saveRole",
+      "httpMethod": "PUT",
+      "path": "/api/v1/authorization/applications/{app}/roles/{role}",
+      "condition": "alisa.authorization.enabled=true",
+      "line": 75,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/controller/AuthorizationController.java#L75",
+      "service": "user-service"
+    },
+    {
+      "controller": "AuthorizationController",
+      "handler": "unbind",
+      "httpMethod": "DELETE",
+      "path": "/api/v1/authorization/applications/{app}/roles/{role}/bindings",
+      "condition": "alisa.authorization.enabled=true",
+      "line": 122,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/controller/AuthorizationController.java#L122",
+      "service": "user-service"
+    },
+    {
+      "controller": "AuthorizationController",
+      "handler": "bindings",
+      "httpMethod": "GET",
+      "path": "/api/v1/authorization/applications/{app}/roles/{role}/bindings",
+      "condition": "alisa.authorization.enabled=true",
+      "line": 109,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/controller/AuthorizationController.java#L109",
+      "service": "user-service"
+    },
+    {
+      "controller": "AuthorizationController",
+      "handler": "bind",
+      "httpMethod": "PUT",
+      "path": "/api/v1/authorization/applications/{app}/roles/{role}/bindings",
+      "condition": "alisa.authorization.enabled=true",
+      "line": 115,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/controller/AuthorizationController.java#L115",
+      "service": "user-service"
+    },
+    {
+      "controller": "AuthorizationController",
+      "handler": "revoke",
+      "httpMethod": "DELETE",
+      "path": "/api/v1/authorization/applications/{app}/roles/{role}/grants",
+      "condition": "alisa.authorization.enabled=true",
+      "line": 102,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/controller/AuthorizationController.java#L102",
+      "service": "user-service"
+    },
+    {
+      "controller": "AuthorizationController",
+      "handler": "grants",
+      "httpMethod": "GET",
+      "path": "/api/v1/authorization/applications/{app}/roles/{role}/grants",
+      "condition": "alisa.authorization.enabled=true",
+      "line": 89,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/controller/AuthorizationController.java#L89",
+      "service": "user-service"
+    },
+    {
+      "controller": "AuthorizationController",
+      "handler": "grant",
+      "httpMethod": "PUT",
+      "path": "/api/v1/authorization/applications/{app}/roles/{role}/grants",
+      "condition": "alisa.authorization.enabled=true",
+      "line": 95,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/controller/AuthorizationController.java#L95",
+      "service": "user-service"
+    },
+    {
+      "controller": "AuthorizationController",
+      "handler": "check",
+      "httpMethod": "POST",
+      "path": "/api/v1/authorization/check",
+      "condition": "alisa.authorization.enabled=true",
+      "line": 37,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/controller/AuthorizationController.java#L37",
+      "service": "user-service"
+    },
+    {
+      "controller": "IdentityProviderController",
+      "handler": "bindings",
+      "httpMethod": "GET",
+      "path": "/api/v1/user/identities",
+      "condition": "",
+      "line": 28,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/controller/IdentityProviderController.java#L28",
+      "service": "user-service"
+    },
+    {
+      "controller": "IdentityProviderController",
+      "handler": "unbind",
+      "httpMethod": "DELETE",
+      "path": "/api/v1/user/identities/{providerId}",
+      "condition": "",
+      "line": 40,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/controller/IdentityProviderController.java#L40",
+      "service": "user-service"
+    },
+    {
+      "controller": "IdentityProviderController",
+      "handler": "bind",
+      "httpMethod": "POST",
+      "path": "/api/v1/user/identities/{providerId}",
+      "condition": "",
+      "line": 33,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/controller/IdentityProviderController.java#L33",
+      "service": "user-service"
+    },
+    {
+      "controller": "IdentityProviderController",
+      "handler": "providers",
+      "httpMethod": "GET",
+      "path": "/api/v1/user/providers",
+      "condition": "",
+      "line": 20,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/controller/IdentityProviderController.java#L20",
+      "service": "user-service"
+    },
+    {
+      "controller": "IdentityProviderController",
+      "handler": "signin",
+      "httpMethod": "POST",
+      "path": "/api/v1/user/signin/{providerId}",
+      "condition": "",
+      "line": 23,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/controller/IdentityProviderController.java#L23",
+      "service": "user-service"
+    },
+    {
+      "controller": "OAuthPages",
+      "handler": "applications",
+      "httpMethod": "GET",
+      "path": "/oauth/apps",
+      "condition": "alisa.oauth.enabled=true",
+      "line": 35,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/oauth/OAuthPages.java#L35",
+      "service": "user-service"
+    },
+    {
+      "controller": "OAuthPages",
+      "handler": "create",
+      "httpMethod": "POST",
+      "path": "/oauth/apps",
+      "condition": "alisa.oauth.enabled=true",
+      "line": 52,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/oauth/OAuthPages.java#L52",
+      "service": "user-service"
+    },
+    {
+      "controller": "OAuthPages",
+      "handler": "disable",
+      "httpMethod": "POST",
+      "path": "/oauth/apps/disable",
+      "condition": "alisa.oauth.enabled=true",
+      "line": 59,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/oauth/OAuthPages.java#L59",
+      "service": "user-service"
+    },
+    {
+      "controller": "OAuthPages",
+      "handler": "connections",
+      "httpMethod": "GET",
+      "path": "/oauth/connections",
+      "condition": "alisa.oauth.enabled=true",
+      "line": 63,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/oauth/OAuthPages.java#L63",
+      "service": "user-service"
+    },
+    {
+      "controller": "OAuthPages",
+      "handler": "revoke",
+      "httpMethod": "POST",
+      "path": "/oauth/connections/revoke",
+      "condition": "alisa.oauth.enabled=true",
+      "line": 69,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/oauth/OAuthPages.java#L69",
+      "service": "user-service"
+    },
+    {
+      "controller": "OAuthPages",
+      "handler": "consent",
+      "httpMethod": "GET",
+      "path": "/oauth/consent",
+      "condition": "alisa.oauth.enabled=true",
+      "line": 73,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/oauth/OAuthPages.java#L73",
+      "service": "user-service"
+    },
+    {
+      "controller": "OAuthResourceClients",
+      "handler": "create",
+      "httpMethod": "POST",
+      "path": "/api/v1/user/oauth/resource-clients",
+      "condition": "alisa.oauth.enabled=true",
+      "line": 20,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/oauth/OAuthResourceClients.java#L20",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantCapabilityController",
+      "handler": "capability",
+      "httpMethod": "GET",
+      "path": "/api/v1/user/tenancy",
+      "condition": "",
+      "line": 9,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantCapabilityController.java#L9",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantController",
+      "handler": "list",
+      "httpMethod": "GET",
+      "path": "/api/v1/user/tenants",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 24,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantController.java#L24",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantController",
+      "handler": "create",
+      "httpMethod": "POST",
+      "path": "/api/v1/user/tenants",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 25,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantController.java#L25",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantController",
+      "handler": "update",
+      "httpMethod": "PUT",
+      "path": "/api/v1/user/tenants/{tenant}",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 26,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantController.java#L26",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantController",
+      "handler": "applications",
+      "httpMethod": "GET",
+      "path": "/api/v1/user/tenants/{tenant}/applications",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 41,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantController.java#L41",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantController",
+      "handler": "application",
+      "httpMethod": "POST",
+      "path": "/api/v1/user/tenants/{tenant}/applications",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 46,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantController.java#L46",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantController",
+      "handler": "disable",
+      "httpMethod": "DELETE",
+      "path": "/api/v1/user/tenants/{tenant}/applications/{client}",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 48,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantController.java#L48",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantController",
+      "handler": "approve",
+      "httpMethod": "PUT",
+      "path": "/api/v1/user/tenants/{tenant}/applications/{client}/approval",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 47,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantController.java#L47",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantController",
+      "handler": "rotate",
+      "httpMethod": "POST",
+      "path": "/api/v1/user/tenants/{tenant}/applications/{client}/secret",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 49,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantController.java#L49",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantController",
+      "handler": "audit",
+      "httpMethod": "GET",
+      "path": "/api/v1/user/tenants/{tenant}/audit",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 54,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantController.java#L54",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantController",
+      "handler": "catalog",
+      "httpMethod": "GET",
+      "path": "/api/v1/user/tenants/{tenant}/catalog",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 42,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantController.java#L42",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantController",
+      "handler": "invitations",
+      "httpMethod": "GET",
+      "path": "/api/v1/user/tenants/{tenant}/invitations",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 35,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantController.java#L35",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantController",
+      "handler": "invite",
+      "httpMethod": "POST",
+      "path": "/api/v1/user/tenants/{tenant}/invitations",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 34,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantController.java#L34",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantController",
+      "handler": "accept",
+      "httpMethod": "POST",
+      "path": "/api/v1/user/tenants/{tenant}/invitations/accept",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 37,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantController.java#L37",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantController",
+      "handler": "cancelInvitation",
+      "httpMethod": "DELETE",
+      "path": "/api/v1/user/tenants/{tenant}/invitations/{invitation}",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 36,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantController.java#L36",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantController",
+      "handler": "members",
+      "httpMethod": "GET",
+      "path": "/api/v1/user/tenants/{tenant}/members",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 33,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantController.java#L33",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantController",
+      "handler": "remove",
+      "httpMethod": "DELETE",
+      "path": "/api/v1/user/tenants/{tenant}/members/{member}",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 39,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantController.java#L39",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantController",
+      "handler": "role",
+      "httpMethod": "PUT",
+      "path": "/api/v1/user/tenants/{tenant}/members/{member}",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 38,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantController.java#L38",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantController",
+      "handler": "transfer",
+      "httpMethod": "POST",
+      "path": "/api/v1/user/tenants/{tenant}/owner",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 40,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantController.java#L40",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantController",
+      "handler": "revoke",
+      "httpMethod": "DELETE",
+      "path": "/api/v1/user/tenants/{tenant}/permissions",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 53,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantController.java#L53",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantController",
+      "handler": "permissions",
+      "httpMethod": "GET",
+      "path": "/api/v1/user/tenants/{tenant}/permissions",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 51,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantController.java#L51",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantController",
+      "handler": "grant",
+      "httpMethod": "PUT",
+      "path": "/api/v1/user/tenants/{tenant}/permissions",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 52,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantController.java#L52",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantController",
+      "handler": "resource",
+      "httpMethod": "POST",
+      "path": "/api/v1/user/tenants/{tenant}/resource-clients",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 50,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantController.java#L50",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantController",
+      "handler": "tenantToken",
+      "httpMethod": "POST",
+      "path": "/api/v1/user/tenants/{tenant}/token",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 27,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantController.java#L27",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantPages",
+      "handler": "list",
+      "httpMethod": "GET",
+      "path": "/oauth/tenants",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 27,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantPages.java#L27",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantPages",
+      "handler": "create",
+      "httpMethod": "POST",
+      "path": "/oauth/tenants",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 34,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantPages.java#L34",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantPages",
+      "handler": "accept",
+      "httpMethod": "POST",
+      "path": "/oauth/tenants/accept",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 35,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantPages.java#L35",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantPages",
+      "handler": "view",
+      "httpMethod": "GET",
+      "path": "/oauth/tenants/{tenant}",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 36,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantPages.java#L36",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantPages",
+      "handler": "app",
+      "httpMethod": "POST",
+      "path": "/oauth/tenants/{tenant}/applications",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 82,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantPages.java#L82",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantPages",
+      "handler": "approval",
+      "httpMethod": "POST",
+      "path": "/oauth/tenants/{tenant}/applications/{client}/approval",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 84,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantPages.java#L84",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantPages",
+      "handler": "disable",
+      "httpMethod": "POST",
+      "path": "/oauth/tenants/{tenant}/applications/{client}/disable",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 85,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantPages.java#L85",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantPages",
+      "handler": "rotate",
+      "httpMethod": "POST",
+      "path": "/oauth/tenants/{tenant}/applications/{client}/secret",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 86,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantPages.java#L86",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantPages",
+      "handler": "audit",
+      "httpMethod": "GET",
+      "path": "/oauth/tenants/{tenant}/audit",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 88,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantPages.java#L88",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantPages",
+      "handler": "cancel",
+      "httpMethod": "POST",
+      "path": "/oauth/tenants/{tenant}/invitations/{invitation}/cancel",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 78,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantPages.java#L78",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantPages",
+      "handler": "invite",
+      "httpMethod": "POST",
+      "path": "/oauth/tenants/{tenant}/invite",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 76,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantPages.java#L76",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantPages",
+      "handler": "role",
+      "httpMethod": "POST",
+      "path": "/oauth/tenants/{tenant}/member-role",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 77,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantPages.java#L77",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantPages",
+      "handler": "owner",
+      "httpMethod": "POST",
+      "path": "/oauth/tenants/{tenant}/owner",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 80,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantPages.java#L80",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantPages",
+      "handler": "permission",
+      "httpMethod": "POST",
+      "path": "/oauth/tenants/{tenant}/permissions",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 87,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantPages.java#L87",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantPages",
+      "handler": "remove",
+      "httpMethod": "POST",
+      "path": "/oauth/tenants/{tenant}/remove",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 79,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantPages.java#L79",
+      "service": "user-service"
+    },
+    {
+      "controller": "TenantPages",
+      "handler": "settings",
+      "httpMethod": "POST",
+      "path": "/oauth/tenants/{tenant}/settings",
+      "condition": "alisa.tenancy.enabled=true",
+      "line": 81,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/tenant/TenantPages.java#L81",
+      "service": "user-service"
+    },
+    {
+      "controller": "UserController",
+      "handler": "changePassword",
+      "httpMethod": "POST",
+      "path": "/api/v1/user/change-password",
+      "condition": "",
+      "line": 30,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/controller/UserController.java#L30",
+      "service": "user-service"
+    },
+    {
+      "controller": "UserController",
+      "handler": "changePasswordByEmail",
+      "httpMethod": "POST",
+      "path": "/api/v1/user/change-password-email",
+      "condition": "",
+      "line": 35,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/controller/UserController.java#L35",
+      "service": "user-service"
+    },
+    {
+      "controller": "UserController",
+      "handler": "health",
+      "httpMethod": "GET",
+      "path": "/api/v1/user/health",
+      "condition": "",
+      "line": 46,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/controller/UserController.java#L46",
+      "service": "user-service"
+    },
+    {
+      "controller": "UserController",
+      "handler": "profile",
+      "httpMethod": "GET",
+      "path": "/api/v1/user/profile",
+      "condition": "",
+      "line": 40,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/controller/UserController.java#L40",
+      "service": "user-service"
+    },
+    {
+      "controller": "UserController",
+      "handler": "sendResetCode",
+      "httpMethod": "POST",
+      "path": "/api/v1/user/send",
+      "condition": "",
+      "line": 24,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/controller/UserController.java#L24",
+      "service": "user-service"
+    },
+    {
+      "controller": "UserController",
+      "handler": "signin",
+      "httpMethod": "POST",
+      "path": "/api/v1/user/signin",
+      "condition": "",
+      "line": 18,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/controller/UserController.java#L18",
+      "service": "user-service"
+    },
+    {
+      "controller": "UserController",
+      "handler": "signup",
+      "httpMethod": "POST",
+      "path": "/api/v1/user/signup",
+      "condition": "",
+      "line": 21,
+      "source": "https://github.com/future-alisa/alisa-cloud/blob/03f0644ea91b6df262425b62000398e40a7d4fbc/alisa-user/src/main/java/com/alisa/user/controller/UserController.java#L21",
+      "service": "user-service"
+    },
+    {
+      "controller": "ResultController",
+      "handler": "deleteResult",
+      "httpMethod": "DELETE",
+      "path": "/target-service/api/v1/result/delete",
+      "condition": "",
+      "line": 48,
+      "source": "https://github.com/sunyuboalisa/SmallOKR/blob/bf29dd6ddc868c8d94b2bba5d32c179065efce44/smallokr_server/targetservice/src/main/java/alisa/smallokr/controller/ResultController.java#L48",
+      "service": "target-service"
+    },
+    {
+      "controller": "ResultController",
+      "handler": "get",
+      "httpMethod": "GET",
+      "path": "/target-service/api/v1/result/get",
+      "condition": "",
+      "line": 55,
+      "source": "https://github.com/sunyuboalisa/SmallOKR/blob/bf29dd6ddc868c8d94b2bba5d32c179065efce44/smallokr_server/targetservice/src/main/java/alisa/smallokr/controller/ResultController.java#L55",
+      "service": "target-service"
+    },
+    {
+      "controller": "ResultController",
+      "handler": "getAll",
+      "httpMethod": "GET",
+      "path": "/target-service/api/v1/result/getAll",
+      "condition": "",
+      "line": 62,
+      "source": "https://github.com/sunyuboalisa/SmallOKR/blob/bf29dd6ddc868c8d94b2bba5d32c179065efce44/smallokr_server/targetservice/src/main/java/alisa/smallokr/controller/ResultController.java#L62",
+      "service": "target-service"
+    },
+    {
+      "controller": "ResultController",
+      "handler": "addResult",
+      "httpMethod": "POST",
+      "path": "/target-service/api/v1/result/save",
+      "condition": "",
+      "line": 27,
+      "source": "https://github.com/sunyuboalisa/SmallOKR/blob/bf29dd6ddc868c8d94b2bba5d32c179065efce44/smallokr_server/targetservice/src/main/java/alisa/smallokr/controller/ResultController.java#L27",
+      "service": "target-service"
+    },
+    {
+      "controller": "TargetController",
+      "handler": "getAnalysis",
+      "httpMethod": "GET",
+      "path": "/target-service/api/v1/target/analysis",
+      "condition": "",
+      "line": 80,
+      "source": "https://github.com/sunyuboalisa/SmallOKR/blob/bf29dd6ddc868c8d94b2bba5d32c179065efce44/smallokr_server/targetservice/src/main/java/alisa/smallokr/controller/TargetController.java#L80",
+      "service": "target-service"
+    },
+    {
+      "controller": "TargetController",
+      "handler": "deleteTarget",
+      "httpMethod": "DELETE",
+      "path": "/target-service/api/v1/target/delete",
+      "condition": "",
+      "line": 52,
+      "source": "https://github.com/sunyuboalisa/SmallOKR/blob/bf29dd6ddc868c8d94b2bba5d32c179065efce44/smallokr_server/targetservice/src/main/java/alisa/smallokr/controller/TargetController.java#L52",
+      "service": "target-service"
+    },
+    {
+      "controller": "TargetController",
+      "handler": "get",
+      "httpMethod": "GET",
+      "path": "/target-service/api/v1/target/get",
+      "condition": "",
+      "line": 67,
+      "source": "https://github.com/sunyuboalisa/SmallOKR/blob/bf29dd6ddc868c8d94b2bba5d32c179065efce44/smallokr_server/targetservice/src/main/java/alisa/smallokr/controller/TargetController.java#L67",
+      "service": "target-service"
+    },
+    {
+      "controller": "TargetController",
+      "handler": "addTarget",
+      "httpMethod": "POST",
+      "path": "/target-service/api/v1/target/save",
+      "condition": "",
+      "line": 31,
+      "source": "https://github.com/sunyuboalisa/SmallOKR/blob/bf29dd6ddc868c8d94b2bba5d32c179065efce44/smallokr_server/targetservice/src/main/java/alisa/smallokr/controller/TargetController.java#L31",
+      "service": "target-service"
+    },
+    {
+      "controller": "TargetController",
+      "handler": "updateTarget",
+      "httpMethod": "PUT",
+      "path": "/target-service/api/v1/target/update",
+      "condition": "",
+      "line": 59,
+      "source": "https://github.com/sunyuboalisa/SmallOKR/blob/bf29dd6ddc868c8d94b2bba5d32c179065efce44/smallokr_server/targetservice/src/main/java/alisa/smallokr/controller/TargetController.java#L59",
+      "service": "target-service"
+    },
+    {
+      "controller": "DicController",
+      "handler": "getDicEntry",
+      "httpMethod": "GET",
+      "path": "/api/v1/todo/dic/get",
+      "condition": "",
+      "line": 22,
+      "source": "https://github.com/sunyuboalisa/SmallOKR/blob/bf29dd6ddc868c8d94b2bba5d32c179065efce44/smallokr_server/todoservice/src/main/java/alisa/smallokr/controller/DicController.java#L22",
+      "service": "todo-service"
+    },
+    {
+      "controller": "TodoController",
+      "handler": "addTodo",
+      "httpMethod": "POST",
+      "path": "/api/v1/todo/add",
+      "condition": "",
+      "line": 37,
+      "source": "https://github.com/sunyuboalisa/SmallOKR/blob/bf29dd6ddc868c8d94b2bba5d32c179065efce44/smallokr_server/todoservice/src/main/java/alisa/smallokr/controller/TodoController.java#L37",
+      "service": "todo-service"
+    },
+    {
+      "controller": "TodoController",
+      "handler": "addRepeat",
+      "httpMethod": "POST",
+      "path": "/api/v1/todo/addRepeat",
+      "condition": "",
+      "line": 113,
+      "source": "https://github.com/sunyuboalisa/SmallOKR/blob/bf29dd6ddc868c8d94b2bba5d32c179065efce44/smallokr_server/todoservice/src/main/java/alisa/smallokr/controller/TodoController.java#L113",
+      "service": "todo-service"
+    },
+    {
+      "controller": "TodoController",
+      "handler": "getAnalysis",
+      "httpMethod": "GET",
+      "path": "/api/v1/todo/analysis",
+      "condition": "",
+      "line": 138,
+      "source": "https://github.com/sunyuboalisa/SmallOKR/blob/bf29dd6ddc868c8d94b2bba5d32c179065efce44/smallokr_server/todoservice/src/main/java/alisa/smallokr/controller/TodoController.java#L138",
+      "service": "todo-service"
+    },
+    {
+      "controller": "TodoController",
+      "handler": "deleteTodo",
+      "httpMethod": "DELETE",
+      "path": "/api/v1/todo/delete",
+      "condition": "",
+      "line": 53,
+      "source": "https://github.com/sunyuboalisa/SmallOKR/blob/bf29dd6ddc868c8d94b2bba5d32c179065efce44/smallokr_server/todoservice/src/main/java/alisa/smallokr/controller/TodoController.java#L53",
+      "service": "todo-service"
+    },
+    {
+      "controller": "TodoController",
+      "handler": "deleteRepeat",
+      "httpMethod": "DELETE",
+      "path": "/api/v1/todo/deleteRepeat",
+      "condition": "",
+      "line": 131,
+      "source": "https://github.com/sunyuboalisa/SmallOKR/blob/bf29dd6ddc868c8d94b2bba5d32c179065efce44/smallokr_server/todoservice/src/main/java/alisa/smallokr/controller/TodoController.java#L131",
+      "service": "todo-service"
+    },
+    {
+      "controller": "TodoController",
+      "handler": "get",
+      "httpMethod": "GET",
+      "path": "/api/v1/todo/get",
+      "condition": "",
+      "line": 68,
+      "source": "https://github.com/sunyuboalisa/SmallOKR/blob/bf29dd6ddc868c8d94b2bba5d32c179065efce44/smallokr_server/todoservice/src/main/java/alisa/smallokr/controller/TodoController.java#L68",
+      "service": "todo-service"
+    },
+    {
+      "controller": "TodoController",
+      "handler": "getRepeat",
+      "httpMethod": "GET",
+      "path": "/api/v1/todo/getRepeat",
+      "condition": "",
+      "line": 105,
+      "source": "https://github.com/sunyuboalisa/SmallOKR/blob/bf29dd6ddc868c8d94b2bba5d32c179065efce44/smallokr_server/todoservice/src/main/java/alisa/smallokr/controller/TodoController.java#L105",
+      "service": "todo-service"
+    },
+    {
+      "controller": "TodoController",
+      "handler": "getTodoByWeekDay",
+      "httpMethod": "GET",
+      "path": "/api/v1/todo/getTodoByWeekDay",
+      "condition": "",
+      "line": 79,
+      "source": "https://github.com/sunyuboalisa/SmallOKR/blob/bf29dd6ddc868c8d94b2bba5d32c179065efce44/smallokr_server/todoservice/src/main/java/alisa/smallokr/controller/TodoController.java#L79",
+      "service": "todo-service"
+    },
+    {
+      "controller": "TodoController",
+      "handler": "updateTodo",
+      "httpMethod": "PUT",
+      "path": "/api/v1/todo/update",
+      "condition": "",
+      "line": 60,
+      "source": "https://github.com/sunyuboalisa/SmallOKR/blob/bf29dd6ddc868c8d94b2bba5d32c179065efce44/smallokr_server/todoservice/src/main/java/alisa/smallokr/controller/TodoController.java#L60",
+      "service": "todo-service"
+    },
+    {
+      "controller": "TraceController",
+      "handler": "echo",
+      "httpMethod": "GET",
+      "path": "/api/v1/trace/get",
+      "condition": "",
+      "line": 16,
+      "source": "https://github.com/sunyuboalisa/SmallOKR/blob/bf29dd6ddc868c8d94b2bba5d32c179065efce44/smallokr_server/traceservice/src/main/java/alisa/smallokr/controller/TraceController.java#L16",
+      "service": "trace-service"
+    },
+    {
+      "controller": "CategoryController",
+      "handler": "batchDelete",
+      "httpMethod": "DELETE",
+      "path": "/community/category/batch-delete",
+      "condition": "",
+      "line": 42,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CategoryController.java#L42",
+      "service": "community-service"
+    },
+    {
+      "controller": "CategoryController",
+      "handler": "batchUpsert",
+      "httpMethod": "POST",
+      "path": "/community/category/batch-upsert",
+      "condition": "",
+      "line": 36,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CategoryController.java#L36",
+      "service": "community-service"
+    },
+    {
+      "controller": "CategoryController",
+      "handler": "getAll",
+      "httpMethod": "GET",
+      "path": "/community/category/getAll",
+      "condition": "",
+      "line": 18,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CategoryController.java#L18",
+      "service": "community-service"
+    },
+    {
+      "controller": "CategoryController",
+      "handler": "upsert",
+      "httpMethod": "POST",
+      "path": "/community/category/upsert",
+      "condition": "",
+      "line": 30,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CategoryController.java#L30",
+      "service": "community-service"
+    },
+    {
+      "controller": "CategoryController",
+      "handler": "getById",
+      "httpMethod": "GET",
+      "path": "/community/category/{id}",
+      "condition": "",
+      "line": 24,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CategoryController.java#L24",
+      "service": "community-service"
+    },
+    {
+      "controller": "ChannelController",
+      "handler": "batchDelete",
+      "httpMethod": "DELETE",
+      "path": "/community/channel/batch-delete",
+      "condition": "",
+      "line": 59,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/ChannelController.java#L59",
+      "service": "community-service"
+    },
+    {
+      "controller": "ChannelController",
+      "handler": "batchUpsert",
+      "httpMethod": "POST",
+      "path": "/community/channel/batch-upsert",
+      "condition": "",
+      "line": 53,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/ChannelController.java#L53",
+      "service": "community-service"
+    },
+    {
+      "controller": "ChannelController",
+      "handler": "getAll",
+      "httpMethod": "GET",
+      "path": "/community/channel/getAll",
+      "condition": "",
+      "line": 29,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/ChannelController.java#L29",
+      "service": "community-service"
+    },
+    {
+      "controller": "ChannelController",
+      "handler": "getAllByCommunityId",
+      "httpMethod": "GET",
+      "path": "/community/channel/getAllByCommunityId",
+      "condition": "",
+      "line": 35,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/ChannelController.java#L35",
+      "service": "community-service"
+    },
+    {
+      "controller": "ChannelController",
+      "handler": "save",
+      "httpMethod": "POST",
+      "path": "/community/channel/save",
+      "condition": "",
+      "line": 18,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/ChannelController.java#L18",
+      "service": "community-service"
+    },
+    {
+      "controller": "ChannelController",
+      "handler": "upsert",
+      "httpMethod": "POST",
+      "path": "/community/channel/upsert",
+      "condition": "",
+      "line": 47,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/ChannelController.java#L47",
+      "service": "community-service"
+    },
+    {
+      "controller": "ChannelController",
+      "handler": "delete",
+      "httpMethod": "DELETE",
+      "path": "/community/channel/{id}",
+      "condition": "",
+      "line": 24,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/ChannelController.java#L24",
+      "service": "community-service"
+    },
+    {
+      "controller": "ChannelController",
+      "handler": "getById",
+      "httpMethod": "GET",
+      "path": "/community/channel/{id}",
+      "condition": "",
+      "line": 41,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/ChannelController.java#L41",
+      "service": "community-service"
+    },
+    {
+      "controller": "ChannelDiscussionController",
+      "handler": "access",
+      "httpMethod": "GET",
+      "path": "/community/channel/{channelId}/access",
+      "condition": "",
+      "line": 15,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/ChannelDiscussionController.java#L15",
+      "service": "community-service"
+    },
+    {
+      "controller": "ChannelDiscussionController",
+      "handler": "join",
+      "httpMethod": "POST",
+      "path": "/community/channel/{channelId}/join",
+      "condition": "",
+      "line": 19,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/ChannelDiscussionController.java#L19",
+      "service": "community-service"
+    },
+    {
+      "controller": "ChannelDiscussionController",
+      "handler": "leave",
+      "httpMethod": "POST",
+      "path": "/community/channel/{channelId}/leave",
+      "condition": "",
+      "line": 21,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/ChannelDiscussionController.java#L21",
+      "service": "community-service"
+    },
+    {
+      "controller": "ChannelDiscussionController",
+      "handler": "history",
+      "httpMethod": "GET",
+      "path": "/community/channel/{channelId}/messages",
+      "condition": "",
+      "line": 23,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/ChannelDiscussionController.java#L23",
+      "service": "community-service"
+    },
+    {
+      "controller": "ChannelDiscussionController",
+      "handler": "send",
+      "httpMethod": "POST",
+      "path": "/community/channel/{channelId}/messages",
+      "condition": "",
+      "line": 28,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/ChannelDiscussionController.java#L28",
+      "service": "community-service"
+    },
+    {
+      "controller": "ChannelUserController",
+      "handler": "batchDelete",
+      "httpMethod": "DELETE",
+      "path": "/community/channeluser/batch-delete",
+      "condition": "",
+      "line": 55,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/ChannelUserController.java#L55",
+      "service": "community-service"
+    },
+    {
+      "controller": "ChannelUserController",
+      "handler": "batchUpsert",
+      "httpMethod": "POST",
+      "path": "/community/channeluser/batch-upsert",
+      "condition": "",
+      "line": 49,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/ChannelUserController.java#L49",
+      "service": "community-service"
+    },
+    {
+      "controller": "ChannelUserController",
+      "handler": "getAll",
+      "httpMethod": "GET",
+      "path": "/community/channeluser/getAll",
+      "condition": "",
+      "line": 25,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/ChannelUserController.java#L25",
+      "service": "community-service"
+    },
+    {
+      "controller": "ChannelUserController",
+      "handler": "getAllByChannelId",
+      "httpMethod": "GET",
+      "path": "/community/channeluser/getAllByChannelId",
+      "condition": "",
+      "line": 31,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/ChannelUserController.java#L31",
+      "service": "community-service"
+    },
+    {
+      "controller": "ChannelUserController",
+      "handler": "upsert",
+      "httpMethod": "POST",
+      "path": "/community/channeluser/upsert",
+      "condition": "",
+      "line": 43,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/ChannelUserController.java#L43",
+      "service": "community-service"
+    },
+    {
+      "controller": "ChannelUserController",
+      "handler": "remove",
+      "httpMethod": "DELETE",
+      "path": "/community/channeluser/{id}",
+      "condition": "",
+      "line": 20,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/ChannelUserController.java#L20",
+      "service": "community-service"
+    },
+    {
+      "controller": "ChannelUserController",
+      "handler": "getById",
+      "httpMethod": "GET",
+      "path": "/community/channeluser/{id}",
+      "condition": "",
+      "line": 37,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/ChannelUserController.java#L37",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommentController",
+      "handler": "batchDelete",
+      "httpMethod": "DELETE",
+      "path": "/community/comment/batch-delete",
+      "condition": "",
+      "line": 42,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommentController.java#L42",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommentController",
+      "handler": "batchUpsert",
+      "httpMethod": "POST",
+      "path": "/community/comment/batch-upsert",
+      "condition": "",
+      "line": 36,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommentController.java#L36",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommentController",
+      "handler": "getAll",
+      "httpMethod": "GET",
+      "path": "/community/comment/getAll",
+      "condition": "",
+      "line": 18,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommentController.java#L18",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommentController",
+      "handler": "upsert",
+      "httpMethod": "POST",
+      "path": "/community/comment/upsert",
+      "condition": "",
+      "line": 30,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommentController.java#L30",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommentController",
+      "handler": "getById",
+      "httpMethod": "GET",
+      "path": "/community/comment/{id}",
+      "condition": "",
+      "line": 24,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommentController.java#L24",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommunityController",
+      "handler": "batchDelete",
+      "httpMethod": "DELETE",
+      "path": "/community/community/batch-delete",
+      "condition": "",
+      "line": 63,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommunityController.java#L63",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommunityController",
+      "handler": "batchUpsert",
+      "httpMethod": "POST",
+      "path": "/community/community/batch-upsert",
+      "condition": "",
+      "line": 57,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommunityController.java#L57",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommunityController",
+      "handler": "getAll",
+      "httpMethod": "GET",
+      "path": "/community/community/getAll",
+      "condition": "",
+      "line": 21,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommunityController.java#L21",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommunityController",
+      "handler": "getAllWithTag",
+      "httpMethod": "GET",
+      "path": "/community/community/getAllByTag/{tagName}",
+      "condition": "",
+      "line": 34,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommunityController.java#L34",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommunityController",
+      "handler": "getAllByUser",
+      "httpMethod": "GET",
+      "path": "/community/community/getAllByUser",
+      "condition": "",
+      "line": 27,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommunityController.java#L27",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommunityController",
+      "handler": "upsert",
+      "httpMethod": "POST",
+      "path": "/community/community/upsert",
+      "condition": "",
+      "line": 46,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommunityController.java#L46",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommunityController",
+      "handler": "getById",
+      "httpMethod": "GET",
+      "path": "/community/community/{id}",
+      "condition": "",
+      "line": 40,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommunityController.java#L40",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommunityController",
+      "handler": "updateCover",
+      "httpMethod": "POST",
+      "path": "/community/community/{id}/cover",
+      "condition": "",
+      "line": 52,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommunityController.java#L52",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommunityUserController",
+      "handler": "access",
+      "httpMethod": "GET",
+      "path": "/community/communityuser/access",
+      "condition": "",
+      "line": 23,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommunityUserController.java#L23",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommunityUserController",
+      "handler": "add",
+      "httpMethod": "POST",
+      "path": "/community/communityuser/add",
+      "condition": "",
+      "line": 45,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommunityUserController.java#L45",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommunityUserController",
+      "handler": "batchDelete",
+      "httpMethod": "DELETE",
+      "path": "/community/communityuser/batch-delete",
+      "condition": "",
+      "line": 94,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommunityUserController.java#L94",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommunityUserController",
+      "handler": "batchUpsert",
+      "httpMethod": "POST",
+      "path": "/community/communityuser/batch-upsert",
+      "condition": "",
+      "line": 88,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommunityUserController.java#L88",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommunityUserController",
+      "handler": "getAll",
+      "httpMethod": "GET",
+      "path": "/community/communityuser/getAll",
+      "condition": "",
+      "line": 64,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommunityUserController.java#L64",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommunityUserController",
+      "handler": "getAllByCommunityId",
+      "httpMethod": "GET",
+      "path": "/community/communityuser/getAllByCommunityId",
+      "condition": "",
+      "line": 70,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommunityUserController.java#L70",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommunityUserController",
+      "handler": "join",
+      "httpMethod": "POST",
+      "path": "/community/communityuser/join",
+      "condition": "",
+      "line": 40,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommunityUserController.java#L40",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommunityUserController",
+      "handler": "roles",
+      "httpMethod": "GET",
+      "path": "/community/communityuser/roles",
+      "condition": "",
+      "line": 30,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommunityUserController.java#L30",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommunityUserController",
+      "handler": "upsert",
+      "httpMethod": "POST",
+      "path": "/community/communityuser/upsert",
+      "condition": "",
+      "line": 82,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommunityUserController.java#L82",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommunityUserController",
+      "handler": "remove",
+      "httpMethod": "DELETE",
+      "path": "/community/communityuser/{id}",
+      "condition": "",
+      "line": 59,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommunityUserController.java#L59",
+      "service": "community-service"
+    },
+    {
+      "controller": "CommunityUserController",
+      "handler": "getById",
+      "httpMethod": "GET",
+      "path": "/community/communityuser/{id}",
+      "condition": "",
+      "line": 76,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/CommunityUserController.java#L76",
+      "service": "community-service"
+    },
+    {
+      "controller": "DocumentController",
+      "handler": "batchDelete",
+      "httpMethod": "DELETE",
+      "path": "/community/document/batch-delete",
+      "condition": "",
+      "line": 60,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/DocumentController.java#L60",
+      "service": "community-service"
+    },
+    {
+      "controller": "DocumentController",
+      "handler": "batchUpsert",
+      "httpMethod": "POST",
+      "path": "/community/document/batch-upsert",
+      "condition": "",
+      "line": 54,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/DocumentController.java#L54",
+      "service": "community-service"
+    },
+    {
+      "controller": "DocumentController",
+      "handler": "getAll",
+      "httpMethod": "GET",
+      "path": "/community/document/getAll",
+      "condition": "",
+      "line": 19,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/DocumentController.java#L19",
+      "service": "community-service"
+    },
+    {
+      "controller": "DocumentController",
+      "handler": "getAllByComunityId",
+      "httpMethod": "GET",
+      "path": "/community/document/getAllByCommunityId",
+      "condition": "",
+      "line": 25,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/DocumentController.java#L25",
+      "service": "community-service"
+    },
+    {
+      "controller": "DocumentController",
+      "handler": "save",
+      "httpMethod": "POST",
+      "path": "/community/document/save",
+      "condition": "",
+      "line": 43,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/DocumentController.java#L43",
+      "service": "community-service"
+    },
+    {
+      "controller": "DocumentController",
+      "handler": "upsert",
+      "httpMethod": "POST",
+      "path": "/community/document/upsert",
+      "condition": "",
+      "line": 37,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/DocumentController.java#L37",
+      "service": "community-service"
+    },
+    {
+      "controller": "DocumentController",
+      "handler": "delete",
+      "httpMethod": "DELETE",
+      "path": "/community/document/{id}",
+      "condition": "",
+      "line": 49,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/DocumentController.java#L49",
+      "service": "community-service"
+    },
+    {
+      "controller": "DocumentController",
+      "handler": "getById",
+      "httpMethod": "GET",
+      "path": "/community/document/{id}",
+      "condition": "",
+      "line": 31,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/DocumentController.java#L31",
+      "service": "community-service"
+    },
+    {
+      "controller": "InvitationController",
+      "handler": "inviteJoinCommunity",
+      "httpMethod": "POST",
+      "path": "/community/invitation/community",
+      "condition": "",
+      "line": 20,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/InvitationController.java#L20",
+      "service": "community-service"
+    },
+    {
+      "controller": "LegacyDocumentController",
+      "handler": "retired",
+      "httpMethod": "ANY",
+      "path": "/community/basis",
+      "condition": "",
+      "line": 11,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/LegacyDocumentController.java#L11",
+      "service": "community-service"
+    },
+    {
+      "controller": "LegacyDocumentController",
+      "handler": "retired",
+      "httpMethod": "ANY",
+      "path": "/community/basis/**",
+      "condition": "",
+      "line": 11,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/LegacyDocumentController.java#L11",
+      "service": "community-service"
+    },
+    {
+      "controller": "LegacyDocumentController",
+      "handler": "retired",
+      "httpMethod": "ANY",
+      "path": "/community/case",
+      "condition": "",
+      "line": 11,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/LegacyDocumentController.java#L11",
+      "service": "community-service"
+    },
+    {
+      "controller": "LegacyDocumentController",
+      "handler": "retired",
+      "httpMethod": "ANY",
+      "path": "/community/case/**",
+      "condition": "",
+      "line": 11,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/LegacyDocumentController.java#L11",
+      "service": "community-service"
+    },
+    {
+      "controller": "LegacyDocumentController",
+      "handler": "retired",
+      "httpMethod": "ANY",
+      "path": "/community/post",
+      "condition": "",
+      "line": 11,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/LegacyDocumentController.java#L11",
+      "service": "community-service"
+    },
+    {
+      "controller": "LegacyDocumentController",
+      "handler": "retired",
+      "httpMethod": "ANY",
+      "path": "/community/post/**",
+      "condition": "",
+      "line": 11,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/LegacyDocumentController.java#L11",
+      "service": "community-service"
+    },
+    {
+      "controller": "MessageController",
+      "handler": "batchDelete",
+      "httpMethod": "DELETE",
+      "path": "/community/message/batch-delete",
+      "condition": "",
+      "line": 42,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/MessageController.java#L42",
+      "service": "community-service"
+    },
+    {
+      "controller": "MessageController",
+      "handler": "batchUpsert",
+      "httpMethod": "POST",
+      "path": "/community/message/batch-upsert",
+      "condition": "",
+      "line": 36,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/MessageController.java#L36",
+      "service": "community-service"
+    },
+    {
+      "controller": "MessageController",
+      "handler": "getAll",
+      "httpMethod": "GET",
+      "path": "/community/message/getAll",
+      "condition": "",
+      "line": 18,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/MessageController.java#L18",
+      "service": "community-service"
+    },
+    {
+      "controller": "MessageController",
+      "handler": "upsert",
+      "httpMethod": "POST",
+      "path": "/community/message/upsert",
+      "condition": "",
+      "line": 30,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/MessageController.java#L30",
+      "service": "community-service"
+    },
+    {
+      "controller": "MessageController",
+      "handler": "getById",
+      "httpMethod": "GET",
+      "path": "/community/message/{id}",
+      "condition": "",
+      "line": 24,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/MessageController.java#L24",
+      "service": "community-service"
+    },
+    {
+      "controller": "StorageController",
+      "handler": "upload",
+      "httpMethod": "POST",
+      "path": "/community/storage",
+      "condition": "",
+      "line": 22,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/StorageController.java#L22",
+      "service": "community-service"
+    },
+    {
+      "controller": "StorageController",
+      "handler": "readUrl",
+      "httpMethod": "GET",
+      "path": "/community/storage/read-url",
+      "condition": "",
+      "line": 18,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/StorageController.java#L18",
+      "service": "community-service"
+    },
+    {
+      "controller": "StorageController",
+      "handler": "readUrls",
+      "httpMethod": "POST",
+      "path": "/community/storage/read-urls",
+      "condition": "",
+      "line": 14,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/StorageController.java#L14",
+      "service": "community-service"
+    },
+    {
+      "controller": "TagCommunityController",
+      "handler": "batchDelete",
+      "httpMethod": "DELETE",
+      "path": "/community/tagcommunity/batch-delete",
+      "condition": "",
+      "line": 42,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/TagCommunityController.java#L42",
+      "service": "community-service"
+    },
+    {
+      "controller": "TagCommunityController",
+      "handler": "batchUpsert",
+      "httpMethod": "POST",
+      "path": "/community/tagcommunity/batch-upsert",
+      "condition": "",
+      "line": 36,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/TagCommunityController.java#L36",
+      "service": "community-service"
+    },
+    {
+      "controller": "TagCommunityController",
+      "handler": "getAll",
+      "httpMethod": "GET",
+      "path": "/community/tagcommunity/getAll",
+      "condition": "",
+      "line": 18,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/TagCommunityController.java#L18",
+      "service": "community-service"
+    },
+    {
+      "controller": "TagCommunityController",
+      "handler": "upsert",
+      "httpMethod": "POST",
+      "path": "/community/tagcommunity/upsert",
+      "condition": "",
+      "line": 30,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/TagCommunityController.java#L30",
+      "service": "community-service"
+    },
+    {
+      "controller": "TagCommunityController",
+      "handler": "getById",
+      "httpMethod": "GET",
+      "path": "/community/tagcommunity/{id}",
+      "condition": "",
+      "line": 24,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/TagCommunityController.java#L24",
+      "service": "community-service"
+    },
+    {
+      "controller": "TagController",
+      "handler": "batchDelete",
+      "httpMethod": "DELETE",
+      "path": "/community/tag/batch-delete",
+      "condition": "",
+      "line": 42,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/TagController.java#L42",
+      "service": "community-service"
+    },
+    {
+      "controller": "TagController",
+      "handler": "batchUpsert",
+      "httpMethod": "POST",
+      "path": "/community/tag/batch-upsert",
+      "condition": "",
+      "line": 36,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/TagController.java#L36",
+      "service": "community-service"
+    },
+    {
+      "controller": "TagController",
+      "handler": "getAll",
+      "httpMethod": "GET",
+      "path": "/community/tag/getAll",
+      "condition": "",
+      "line": 18,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/TagController.java#L18",
+      "service": "community-service"
+    },
+    {
+      "controller": "TagController",
+      "handler": "upsert",
+      "httpMethod": "POST",
+      "path": "/community/tag/upsert",
+      "condition": "",
+      "line": 30,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/TagController.java#L30",
+      "service": "community-service"
+    },
+    {
+      "controller": "TagController",
+      "handler": "getById",
+      "httpMethod": "GET",
+      "path": "/community/tag/{id}",
+      "condition": "",
+      "line": 24,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/TagController.java#L24",
+      "service": "community-service"
+    },
+    {
+      "controller": "TagDocumentController",
+      "handler": "batchDelete",
+      "httpMethod": "DELETE",
+      "path": "/community/tagdocument/batch-delete",
+      "condition": "",
+      "line": 42,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/TagDocumentController.java#L42",
+      "service": "community-service"
+    },
+    {
+      "controller": "TagDocumentController",
+      "handler": "batchUpsert",
+      "httpMethod": "POST",
+      "path": "/community/tagdocument/batch-upsert",
+      "condition": "",
+      "line": 36,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/TagDocumentController.java#L36",
+      "service": "community-service"
+    },
+    {
+      "controller": "TagDocumentController",
+      "handler": "getAll",
+      "httpMethod": "GET",
+      "path": "/community/tagdocument/getAll",
+      "condition": "",
+      "line": 18,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/TagDocumentController.java#L18",
+      "service": "community-service"
+    },
+    {
+      "controller": "TagDocumentController",
+      "handler": "upsert",
+      "httpMethod": "POST",
+      "path": "/community/tagdocument/upsert",
+      "condition": "",
+      "line": 30,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/TagDocumentController.java#L30",
+      "service": "community-service"
+    },
+    {
+      "controller": "TagDocumentController",
+      "handler": "getById",
+      "httpMethod": "GET",
+      "path": "/community/tagdocument/{id}",
+      "condition": "",
+      "line": 24,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/community_service/src/main/java/com/alisa/controller/TagDocumentController.java#L24",
+      "service": "community-service"
+    },
+    {
+      "controller": "UserController",
+      "handler": "getUserGroups",
+      "httpMethod": "GET",
+      "path": "/api/users/groups/{username}",
+      "condition": "",
+      "line": 23,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/transfer_service/src/main/java/com/alisa/controller/UserController.java#L23",
+      "service": "transfer-service"
+    },
+    {
+      "controller": "UserController",
+      "handler": "getOnlineUsers",
+      "httpMethod": "GET",
+      "path": "/api/users/online",
+      "condition": "",
+      "line": 18,
+      "source": "https://github.com/future-alisa/ScienceCommunity/blob/d10e11afb91e40a99457b91958a382b4015ef1e9/science_community/transfer_service/src/main/java/com/alisa/controller/UserController.java#L18",
+      "service": "transfer-service"
+    }
+  ]
+}

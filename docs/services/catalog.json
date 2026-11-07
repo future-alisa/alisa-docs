@@ -1,0 +1,82 @@
+[
+  {
+    "name": "gateway-service",
+    "title": "公共网关",
+    "project": "alisa-cloud",
+    "port": 8100,
+    "description": "统一入口、鉴权、身份传递和动态业务路由。",
+    "paths": [
+      "公共账号路由",
+      "Nacos 业务路由"
+    ],
+    "doc": "/operations/gateway"
+  },
+  {
+    "name": "user-service",
+    "title": "统一账号",
+    "project": "alisa-cloud",
+    "port": 8084,
+    "description": "账号、身份提供者与按配置启用的授权能力。",
+    "paths": [
+      "/api/v1/user/**",
+      "/api/v1/authorization/**"
+    ],
+    "doc": "/api/generated/account"
+  },
+  {
+    "name": "target-service",
+    "title": "目标与阶段成果",
+    "project": "SmallOKR",
+    "port": 9081,
+    "description": "目标、阶段成果及对应业务操作。",
+    "paths": [
+      "/target-service/api/v1/**"
+    ],
+    "doc": "/api/generated/target"
+  },
+  {
+    "name": "todo-service",
+    "title": "待办",
+    "project": "SmallOKR",
+    "port": 9082,
+    "description": "待办、重复任务、字典和分析接口。",
+    "paths": [
+      "/api/v1/todo/**"
+    ],
+    "doc": "/api/generated/todo"
+  },
+  {
+    "name": "trace-service",
+    "title": "跟踪",
+    "project": "SmallOKR",
+    "port": 8083,
+    "description": "当前源码提供跟踪入口，并通过客户端调用目标服务。",
+    "paths": [
+      "/api/v1/trace/**"
+    ],
+    "doc": "/api/generated/trace"
+  },
+  {
+    "name": "community-service",
+    "title": "学习社区",
+    "project": "ScienceCommunity",
+    "port": 9091,
+    "description": "社区、成员、资料文档与持久化频道讨论。",
+    "paths": [
+      "/community/**"
+    ],
+    "doc": "/api/generated/community"
+  },
+  {
+    "name": "transfer-service",
+    "title": "聊天与在线状态",
+    "project": "ScienceCommunity",
+    "port": 9092,
+    "description": "在线用户、用户群组与旧 STOMP / SockJS 聊天入口。",
+    "paths": [
+      "/api/users/**",
+      "/ws/**"
+    ],
+    "doc": "/api/generated/transfer"
+  }
+]

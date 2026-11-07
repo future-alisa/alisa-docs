@@ -1,0 +1,41 @@
+# Example only: replace image and choose an environment before applying.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alisa-docs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alisa-docs
+  template:
+    metadata:
+      labels:
+        app: alisa-docs
+    spec:
+      containers:
+        - name: docs
+          image: registry.example.com/alisa-docs:REPLACE_WITH_COMMIT
+          ports:
+            - name: http
+              containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: alisa-docs
+spec:
+  selector:
+    app: alisa-docs
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http

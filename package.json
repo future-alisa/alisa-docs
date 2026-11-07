@@ -1,0 +1,22 @@
+{
+  "name": "alisa-docs",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Alisa 服务、接口与部署文档",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "vitepress dev docs --host 127.0.0.1",
+    "build": "npm run check && vitepress build docs",
+    "preview": "vitepress preview docs --host 127.0.0.1",
+    "check": "node scripts/check-docs.mjs",
+    "api:sync": "python3 scripts/sync-api.py",
+    "test": "python3 -m unittest discover -s tests -v"
+  },
+  "devDependencies": {
+    "vitepress": "1.6.4",
+    "vue": "^3.5.0"
+  }
+}
