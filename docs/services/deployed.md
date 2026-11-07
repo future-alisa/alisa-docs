@@ -1,6 +1,6 @@
 # 已部署服务与公网入口
 
-核验日期：2026-11-07。以 Argo CD 的实时 Deployment、HTTPRoute 和公网请求交叉核对；下面是本次核验快照，不是持续健康监控。HTTP 200 表示相应页面或探测可达，401 表示需要入口认证；两者都不等同于完整业务测试通过。
+核验日期：2026-11-08。以 Argo CD 的实时 Deployment、HTTPRoute 和公网请求交叉核对；下面是本次核验快照，不是持续健康监控。HTTP 200 表示相应页面或探测可达，401 表示需要入口认证；两者都不等同于完整业务测试通过。
 
 ## 这次部署了什么
 
@@ -25,21 +25,25 @@ SmallOKR 的 `target-service`、`todo-service`、`trace-service` 在源码和网
 
 | 入口 | 外网地址 | 本次检查 |
 | --- | --- | --- |
-| Alisa Portal · 平台管理 | [https://alisa.vip.cpolar.cn/](https://alisa.vip.cpolar.cn/) | 入口可达（200） |
-| Alisa Docs | [https://alisa.vip.cpolar.cn/docs/](https://alisa.vip.cpolar.cn/docs/) | 入口可达（200） |
-| Science Community | [https://alisa.vip.cpolar.cn/science](https://alisa.vip.cpolar.cn/science) | 入口可达（200） |
-| Science Community · 社区管理 | [https://alisa.vip.cpolar.cn/science/community/settings](https://alisa.vip.cpolar.cn/science/community/settings) | 入口可达（200） |
-| Science Community API | [https://alisa.vip.cpolar.cn/science/community-api/community/getAll](https://alisa.vip.cpolar.cn/science/community-api/community/getAll) | 入口可达（200） |
-| Science Chat · 连接探测 | [https://alisa.vip.cpolar.cn/science-chat/ws/info](https://alisa.vip.cpolar.cn/science-chat/ws/info) | 入口可达（200） |
-| Alisa Gateway / 统一账号 | [https://alisa.vip.cpolar.cn/alisa-gateway/api/v1/user/health](https://alisa.vip.cpolar.cn/alisa-gateway/api/v1/user/health) | 入口可达（200） |
-| Alisa Portal API | [https://alisa.vip.cpolar.cn/api/health](https://alisa.vip.cpolar.cn/api/health) | 未登记 HTTP 入口 |
+| Alisa Docs | [https://alisa.vip.cpolar.cn/docs/](https://alisa.vip.cpolar.cn/docs/) | 页面或探测可达（200） |
+| Science Community | [https://alisa.vip.cpolar.cn/science](https://alisa.vip.cpolar.cn/science) | 页面或探测可达（200） |
+| Science Community · 社区管理 | [https://alisa.vip.cpolar.cn/science/community/settings](https://alisa.vip.cpolar.cn/science/community/settings) | 页面或探测可达（200） |
+| Science Community API | [https://alisa.vip.cpolar.cn/science/community-api/community/getAll](https://alisa.vip.cpolar.cn/science/community-api/community/getAll) | 页面或探测可达（200） |
+| Science Chat · 连接探测 | [https://alisa.vip.cpolar.cn/science-chat/ws/info](https://alisa.vip.cpolar.cn/science-chat/ws/info) | 页面或探测可达（200） |
+| Alisa Gateway / 统一账号 | [https://alisa.vip.cpolar.cn/alisa-gateway/api/v1/user/health](https://alisa.vip.cpolar.cn/alisa-gateway/api/v1/user/health) | 页面或探测可达（200） |
+| Alisa Portal API | [https://alisa.vip.cpolar.cn/api/health](https://alisa.vip.cpolar.cn/api/health) | 待验证 |
 | Traefik | [https://alisa.vip.cpolar.cn/dashboard/](https://alisa.vip.cpolar.cn/dashboard/) | 需要访问认证（401） |
-| Argo CD | [https://alisa.vip.cpolar.cn/argocd/](https://alisa.vip.cpolar.cn/argocd/) | 入口可达（200） |
-| Nacos | [https://alisa.vip.cpolar.cn/nacos/](https://alisa.vip.cpolar.cn/nacos/) | 入口可达（200） |
-| Registry | [https://alisa-registry.cpolar.top/v2/](https://alisa-registry.cpolar.top/v2/) | 需要访问认证（401） |
 | SeaweedFS | [https://alisa.vip.cpolar.cn/fs/](https://alisa.vip.cpolar.cn/fs/) | 需要访问认证（401） |
-| SeaweedFS Admin | [https://alisa.vip.cpolar.cn/fs-admin/](https://alisa.vip.cpolar.cn/fs-admin/) | 入口可达（200） |
+| SeaweedFS Admin | [https://alisa.vip.cpolar.cn/fs-admin/](https://alisa.vip.cpolar.cn/fs-admin/) | 页面或探测可达（200） |
+| SeaweedFS Master | [https://alisa.vip.cpolar.cn/fs-master/](https://alisa.vip.cpolar.cn/fs-master/) | 页面或探测可达（200） |
+| SeaweedFS S3 | [https://alisa.vip.cpolar.cn/s3/](https://alisa.vip.cpolar.cn/s3/) | API 拒绝匿名请求（403），协议联调待验证 |
+| Registry | [https://alisa-registry.cpolar.top/v2/](https://alisa-registry.cpolar.top/v2/) | 需要访问认证（401） |
+| Argo CD | [https://alisa.vip.cpolar.cn/argocd/](https://alisa.vip.cpolar.cn/argocd/) | 页面或探测可达（200） |
+| Nacos | [https://alisa.vip.cpolar.cn/nacos/](https://alisa.vip.cpolar.cn/nacos/) | 页面或探测可达（200） |
 | Gitea | [https://gitea-alisa.cpolar.top/](https://gitea-alisa.cpolar.top/) | 本次检查超时，待确认 |
+| Whoami | [https://alisa.vip.cpolar.cn/whoami/](https://alisa.vip.cpolar.cn/whoami/) | 页面或探测可达（200） |
+| Alisa Portal | [https://alisa.vip.cpolar.cn/](https://alisa.vip.cpolar.cn/) | 页面或探测可达（200） |
+| SeaweedFS WebDAV | [https://alisa.vip.cpolar.cn/webdav/](https://alisa.vip.cpolar.cn/webdav/) | 浏览器 GET 返回 405；需 WebDAV 客户端验证 |
 
 PostgreSQL、MySQL 未登记 HTTP 管理页面。数据库的 TCP 连接信息、账号和密码通过环境配置维护，不放入公开文档或门户链接。
 
