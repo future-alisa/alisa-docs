@@ -4,7 +4,7 @@ metadata:
   name: alisa-docs-build-cache
   namespace: alisa-infra
   annotations:
-    argocd.argoproj.io/sync-wave: "-20"
+    argocd.argoproj.io/sync-wave: "-10"
 spec:
   accessModes: [ReadWriteOnce]
   resources:
@@ -14,7 +14,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: alisa-docs-build-65fcd0cc07bf
+  name: alisa-docs-build-ac6a7c282aca
   namespace: alisa-infra
   annotations:
     argocd.argoproj.io/hook: Sync
@@ -42,7 +42,7 @@ spec:
               tar -xzf /tmp/source.tar.gz -C /workspace/source --strip-components=1
           env:
             - name: SOURCE_REVISION
-              value: "65fcd0cc07bf65a8af9f9ad1c9b318990405f154"
+              value: "ac6a7c282aca9e6823f9729b1a6a2e581f834348"
           volumeMounts:
             - name: workspace
               mountPath: /workspace
@@ -80,7 +80,7 @@ spec:
           args:
             - --context=dir:///workspace/runtime
             - --dockerfile=Dockerfile
-            - --destination=alisa-registry.cpolar.top/alisa-docs:src-65fcd0cc07bf
+            - --destination=alisa-registry.cpolar.top/alisa-docs:src-ac6a7c282aca
             - --build-arg=RUNTIME_IMAGE=public.ecr.aws/nginx/nginx-unprivileged@sha256:44e74ca483234093081138b6d7b6f561d55557756a2deefc3a5056148defeb99
             - --push-retry=3
           volumeMounts:
