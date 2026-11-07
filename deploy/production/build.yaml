@@ -4,9 +4,7 @@ metadata:
   name: alisa-docs-build-cache
   namespace: alisa-infra
   annotations:
-    argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/sync-wave: "-20"
-    argocd.argoproj.io/hook-delete-policy: HookFailed
 spec:
   accessModes: [ReadWriteOnce]
   resources:
@@ -16,11 +14,11 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: alisa-docs-build-8ee334877a99
+  name: alisa-docs-build-65fcd0cc07bf
   namespace: alisa-infra
   annotations:
-    argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/sync-wave: "-20"
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/sync-wave: "-10"
     argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
 spec:
   backoffLimit: 0
@@ -44,7 +42,7 @@ spec:
               tar -xzf /tmp/source.tar.gz -C /workspace/source --strip-components=1
           env:
             - name: SOURCE_REVISION
-              value: "8ee334877a99badfddada2b39b2dddd434573635"
+              value: "65fcd0cc07bf65a8af9f9ad1c9b318990405f154"
           volumeMounts:
             - name: workspace
               mountPath: /workspace
@@ -82,7 +80,7 @@ spec:
           args:
             - --context=dir:///workspace/runtime
             - --dockerfile=Dockerfile
-            - --destination=alisa-registry.cpolar.top/alisa-docs:src-8ee334877a99
+            - --destination=alisa-registry.cpolar.top/alisa-docs:src-65fcd0cc07bf
             - --build-arg=RUNTIME_IMAGE=public.ecr.aws/nginx/nginx-unprivileged@sha256:44e74ca483234093081138b6d7b6f561d55557756a2deefc3a5056148defeb99
             - --push-retry=3
           volumeMounts:
