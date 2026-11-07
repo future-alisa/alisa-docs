@@ -1,0 +1,101 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: alisa-docs-build-cache
+  namespace: @@namespace@@
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "-20"
+    argocd.argoproj.io/hook-delete-policy: HookFailed
+spec:
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests:
+      storage: 2Gi
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: alisa-docs-build-@@shortRevision@@
+  namespace: @@namespace@@
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "-20"
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+spec:
+  backoffLimit: 0
+  activeDeadlineSeconds: 3600
+  template:
+    spec:
+      restartPolicy: Never
+      automountServiceAccountToken: false
+      dnsPolicy: None
+      dnsConfig:
+        nameservers: ["223.5.5.5", "1.1.1.1"]
+      initContainers:
+        - name: source
+          image: alpine/git:2.47.2
+          command: [sh, -ec]
+          args:
+            - |
+              wget -T 60 -t 3 -O /tmp/source.tar.gz "https://codeload.github.com/future-alisa/alisa-docs/tar.gz/$SOURCE_REVISION"
+              rm -rf /workspace/source /workspace/runtime
+              mkdir -p /workspace/source /workspace/npm /workspace/runtime/html
+              tar -xzf /tmp/source.tar.gz -C /workspace/source --strip-components=1
+          env:
+            - name: SOURCE_REVISION
+              value: "@@revision@@"
+          volumeMounts:
+            - name: workspace
+              mountPath: /workspace
+        - name: build
+          image: node:22-alpine
+          workingDir: /workspace/source
+          command: [sh, -ec]
+          args:
+            - |
+              npm ci --no-audit --no-fund --cache /workspace/npm
+              npm run build
+              cp -R docs/.vitepress/dist/. /workspace/runtime/html/
+              cp nginx.conf /workspace/runtime/nginx.conf
+              cp deploy/Dockerfile.runtime /workspace/runtime/Dockerfile
+          env:
+            - name: DOCS_BASE
+              value: "@@docsBase@@"
+            - name: NODE_OPTIONS
+              value: --max-old-space-size=768
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: "2"
+              memory: 1Gi
+          volumeMounts:
+            - name: workspace
+              mountPath: /workspace
+      containers:
+        - name: publish-image
+          image: gcr.io/kaniko-project/executor:v1.23.2
+          args:
+            - --context=dir:///workspace/runtime
+            - --dockerfile=Dockerfile
+            - --destination=@@image@@
+            - --build-arg=RUNTIME_IMAGE=@@runtimeImage@@
+            - --push-retry=3
+          volumeMounts:
+            - name: workspace
+              mountPath: /workspace
+            - name: registry
+              mountPath: /kaniko/.docker
+              readOnly: true
+      volumes:
+        - name: workspace
+          persistentVolumeClaim:
+            claimName: alisa-docs-build-cache
+        - name: registry
+          secret:
+            secretName: @@registrySecret@@
+            items:
+              - key: .dockerconfigjson
+                path: config.json

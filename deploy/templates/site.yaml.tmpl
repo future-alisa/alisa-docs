@@ -1,0 +1,98 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alisa-docs
+  namespace: @@namespace@@
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: alisa-docs
+  template:
+    metadata:
+      labels:
+        app: alisa-docs
+    spec:
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: @@registrySecret@@
+      containers:
+        - name: docs
+          image: @@image@@
+          ports:
+            - name: http
+              containerPort: 8080
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 101
+            runAsGroup: 101
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: [ALL]
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+            limits:
+              cpu: 250m
+              memory: 128Mi
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 15
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: alisa-docs
+  namespace: @@namespace@@
+spec:
+  selector:
+    app: alisa-docs
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: alisa-docs
+  namespace: @@namespace@@
+spec:
+  parentRefs:
+    - name: traefik-gateway
+      namespace: traefik
+  hostnames: ["@@publicHost@@"]
+  rules:
+    - matches:
+        - path:
+            type: Exact
+            value: /docs
+      filters:
+        - type: RequestRedirect
+          requestRedirect:
+            path:
+              type: ReplaceFullPath
+              replaceFullPath: "@@docsBase@@"
+            statusCode: 301
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /docs
+      filters:
+        - type: URLRewrite
+          urlRewrite:
+            path:
+              type: ReplacePrefixMatch
+              replacePrefixMatch: /
+      backendRefs:
+        - name: alisa-docs
+          port: 8080

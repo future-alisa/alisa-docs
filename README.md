@@ -52,4 +52,8 @@ deploy/examples/       待环境配置的部署示例
 Dockerfile             静态站容器构建
 ```
 
-子路径部署构建前设置 `DOCS_BASE=/docs/`。凭据不写入本仓库，运行环境与站点公开范围由部署方确定。本次项目初始化不自动修改现有 Argo CD 应用。
+子路径部署构建前设置 `DOCS_BASE=/docs/`。凭据不写入本仓库，运行环境与站点公开范围由部署方确定。服务器发布使用独立的 `alisa-docs` Argo CD 应用，详见 [发布说明](deploy/README.md)。
+
+## 服务器发布
+
+目标入口：`https://alisa.vip.cpolar.cn/docs/`。修改并提交 Markdown 后，运行 `npm run release:prepare`，提交生成的清单并 push，再在 Argo CD 同步 `alisa-docs`。本地保存只热更新本地预览，不直接改线上页面。

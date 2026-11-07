@@ -9,9 +9,26 @@ npm ci
 npm run build
 ```
 
-构建输出是 `docs/.vitepress/dist`。根目录提供 `Dockerfile` 与 Nginx 配置，可用于后续接入 Registry 和 Argo CD。`deploy/examples` 只保存待替换环境参数的示例，初始化文档仓库不会自动部署这些资源。
+构建输出是 `docs/.vitepress/dist`。当前服务器发布配置位于 `deploy/production`，Argo CD Application 定义位于 `deploy/argocd/application.yaml`；通用占位示例仍保留在 `deploy/examples`。
 
-站点部署在子路径时，构建前设置 `DOCS_BASE`，例如 `/docs/`；根路径部署使用默认 `/`。入口代理需要保留浏览器侧的前缀，并按部署示例将其重写到容器根目录；不能仅修改外部代理前缀而保持构建 base 不变。
+目标入口为 `https://alisa.vip.cpolar.cn/docs/`。应用 `alisa-docs` 使用独立 Deployment、Service 和 `/docs` HTTPRoute，复用当前命名空间中已有的 Registry Secret。它是静态公开文档，不使用业务 JWT_SECRET。实际可用性以 Argo CD 状态和入口验证为准。
+
+### 更新线上文档
+
+先编辑 Markdown，执行测试和构建，然后提交正文。再生成固定源码版本的发布清单：
+
+```bash
+git add docs README.md
+git commit -m "Update documentation"
+npm run release:prepare
+git add deploy/production deploy/argocd
+git commit -m "Prepare documentation release"
+git push origin main
+```
+
+在 Argo CD 对 `alisa-docs` 执行完整 Sync：前置 Job 下载固定提交，Node 构建静态文件，Kaniko 使用固定摘要的 NGINX 运行时推送镜像，随后更新站点资源。构建缓存卷保留 npm 下载缓存，默认不启用自动同步。完整步骤见仓库的 [发布说明](https://github.com/future-alisa/alisa-docs/blob/main/deploy/README.md)。
+
+站点部署在子路径时，构建设置 `DOCS_BASE=/docs/`，入口代理去掉 `/docs` 后送入容器，页面生成的资源 URL 保留 `/docs/`；根路径部署使用 `/`。
 
 ## 公共网关的现有发布流程
 

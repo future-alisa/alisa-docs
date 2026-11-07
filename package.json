@@ -13,7 +13,8 @@
     "preview": "vitepress preview docs --host 127.0.0.1",
     "check": "node scripts/check-docs.mjs",
     "api:sync": "python3 scripts/sync-api.py",
-    "test": "python3 -m unittest discover -s tests -v"
+    "test": "python3 -m unittest discover -s tests -v",
+    "release:prepare": "node scripts/prepare-release.mjs"
   },
   "devDependencies": {
     "vitepress": "1.6.4",

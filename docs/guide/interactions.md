@@ -136,4 +136,4 @@ S3 Access Key/Secret Key 只在服务端配置，不进入前端 `NEXT_PUBLIC_*`
   → 发布验证：实际镜像、就绪状态、路由与授权业务请求
 ```
 
-当前公共网关通过 PreSync Job 把部分步骤串联；Portal 有自己的发布配置；文档站需单独接入。Argo CD 的 Synced 表示声明与集群状态的比较结果，Healthy 表示其健康评估，二者都不代替带真实权限和参数的业务联调。
+当前公共网关通过 PreSync Job 把部分步骤串联；Portal 有自己的发布配置；文档站有独立的 Argo CD 发布配置。Argo CD 的 Synced 表示声明与集群状态的比较结果，Healthy 表示其健康评估，二者都不代替带真实权限和参数的业务联调。

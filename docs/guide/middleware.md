@@ -11,7 +11,7 @@
 | Traefik + Gateway API | Git 中有 HTTPRoute 等清单，既有服务已按该方式发布 | 将集群入口流量转给对应 Service | 提供 Service 名、端口、域名和路径，确认跨命名空间引用策略 |
 | Kubernetes / kind | 既有 Argo CD 应用运行平台；基础设施记录为 Windows/Podman 环境内的 Kubernetes | 调度容器、Service、ConfigMap/Secret、探针与存储卷 | 交付镜像和声明式清单，业务服务不向浏览器暴露 kubeconfig |
 | Podman | 既有服务器容器运行/构建环境记录 | 运行服务器侧容器和相关构建工作 | 开发可用对应容器工具；Podman、Kubernetes 与 Registry 不是同一组件 |
-| Nginx | 文档站 Dockerfile 提供的静态运行时，文档站发布仍需单独验证 | 提供静态页面、资源和健康检查 | 构建 `DOCS_BASE` 与入口重写配套，不能据示例推断已经上线 |
+| Nginx | 文档站镜像使用的静态运行时，运行状态以发布结果为准 | 提供静态页面、资源和健康检查 | 构建 `DOCS_BASE` 与入口重写配套，不能据示例推断已经上线 |
 
 ## 服务发现、配置和数据
 
