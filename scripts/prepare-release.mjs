@@ -9,7 +9,8 @@ if (git('status', '--porcelain')) throw new Error('请先提交文档与源码�
 const revision = git('rev-parse', 'HEAD')
 const config = JSON.parse(await readFile(path.join(root, 'deploy/release-config.json'), 'utf8'))
 const image = `${config.registry}/alisa-docs:src-${revision.slice(0, 12)}`
-const values = { ...config, revision, image, shortRevision: revision.slice(0, 12) }
+const pullImage = `${config.pullRegistry || config.registry}/alisa-docs:src-${revision.slice(0, 12)}`
+const values = { ...config, pullRegistrySecret: config.pullRegistrySecret || config.registrySecret, pullImage, revision, image, shortRevision: revision.slice(0, 12) }
 for (const [key, value] of Object.entries(values)) {
   if (typeof value !== 'string' || /[\r\n"']/.test(value)) throw new Error(`Invalid release configuration: ${key}`)
 }

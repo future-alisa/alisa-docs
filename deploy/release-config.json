@@ -7,5 +7,7 @@
   "registrySecret": "alisa-registry",
   "publicHost": "alisa.vip.cpolar.cn",
   "docsBase": "/docs/",
-  "runtimeImage": "public.ecr.aws/nginx/nginx-unprivileged@sha256:44e74ca483234093081138b6d7b6f561d55557756a2deefc3a5056148defeb99"
+  "runtimeImage": "public.ecr.aws/nginx/nginx-unprivileged@sha256:44e74ca483234093081138b6d7b6f561d55557756a2deefc3a5056148defeb99",
+  "pullRegistry": "registry.kind.internal:5000",
+  "pullRegistrySecret": "alisa-docs-registry-auth"
 }

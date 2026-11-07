@@ -16,10 +16,10 @@ spec:
     spec:
       automountServiceAccountToken: false
       imagePullSecrets:
-        - name: alisa-registry
+        - name: alisa-docs-registry-auth
       containers:
         - name: docs
-          image: alisa-registry.cpolar.top/alisa-docs:src-ac6a7c282aca
+          image: registry.kind.internal:5000/alisa-docs:src-ac6a7c282aca@sha256:b7529b35bd846d0eedaa185e36f72c838c3976b33851a3210c68c586ae955e88
           ports:
             - name: http
               containerPort: 8080

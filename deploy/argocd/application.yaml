@@ -13,3 +13,11 @@ spec:
     server: https://kubernetes.default.svc
     namespace: alisa-infra
   revisionHistoryLimit: 5
+  ignoreDifferences:
+    - group: ""
+      kind: Secret
+      name: alisa-docs-registry-auth
+      namespace: alisa-infra
+      jsonPointers: [/data]
+  syncPolicy:
+    syncOptions: [RespectIgnoreDifferences=true]

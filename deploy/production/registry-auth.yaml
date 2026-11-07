@@ -1,0 +1,11 @@
+# Live credentials are provisioned through Argo CD resource API, never Git.
+apiVersion: v1
+kind: Secret
+metadata:
+  name: alisa-docs-registry-auth
+  namespace: alisa-infra
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false,Delete=false
+type: kubernetes.io/dockerconfigjson
+data:
+  .dockerconfigjson: eyJhdXRocyI6e319

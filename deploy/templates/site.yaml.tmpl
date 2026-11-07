@@ -16,10 +16,10 @@ spec:
     spec:
       automountServiceAccountToken: false
       imagePullSecrets:
-        - name: @@registrySecret@@
+        - name: @@pullRegistrySecret@@
       containers:
         - name: docs
-          image: @@image@@
+          image: @@pullImage@@
           ports:
             - name: http
               containerPort: 8080

@@ -40,3 +40,5 @@ git push origin main
 - 仅同步已有静态资源可以跳过构建 Hook；切换到尚未构建的标签时必须先执行完整发布。
 
 源码归档没有 Git 历史，构建 Job 和容器构建设置 `DOCS_ARCHIVE_BUILD=true`，关闭基于 Git 的页面最后更新时间。开发模式仍可显示本地 Git 提交时间；线上版本以部署源码提交和镜像摘要追溯。CI 同时构建普通模式和归档子路径模式。
+
+生产镜像推送到公网 Registry；节点使用同一仓库的 `registry.kind.internal:5000` 内网入口拉取，避免公网绕行。文档专用 Secret `alisa-docs-registry-auth` 的实际认证数据仅通过 Argo CD API 注入，Application 忽略其 `/data` 差异并启用 `RespectIgnoreDifferences`，后续同步保留凭据。Git 中仅存合法空占位；首次部署需先同步 Secret 再注入凭据。
