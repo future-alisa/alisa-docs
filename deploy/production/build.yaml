@@ -14,7 +14,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: alisa-docs-build-ac6a7c282aca
+  name: alisa-docs-build-e9f2b0eaa301
   namespace: alisa-infra
   annotations:
     argocd.argoproj.io/hook: Sync
@@ -27,9 +27,7 @@ spec:
     spec:
       restartPolicy: Never
       automountServiceAccountToken: false
-      dnsPolicy: None
-      dnsConfig:
-        nameservers: ["223.5.5.5", "1.1.1.1"]
+      dnsPolicy: Default
       initContainers:
         - name: source
           image: alpine/git:2.47.2
@@ -42,7 +40,7 @@ spec:
               tar -xzf /tmp/source.tar.gz -C /workspace/source --strip-components=1
           env:
             - name: SOURCE_REVISION
-              value: "ac6a7c282aca9e6823f9729b1a6a2e581f834348"
+              value: "e9f2b0eaa301722762e0de911e682b7b24c1fb50"
           volumeMounts:
             - name: workspace
               mountPath: /workspace
@@ -80,9 +78,10 @@ spec:
           args:
             - --context=dir:///workspace/runtime
             - --dockerfile=Dockerfile
-            - --destination=alisa-registry.cpolar.top/alisa-docs:src-ac6a7c282aca
+            - --destination=registry.kind.internal:5000/alisa-docs:src-e9f2b0eaa301
             - --build-arg=RUNTIME_IMAGE=public.ecr.aws/nginx/nginx-unprivileged@sha256:44e74ca483234093081138b6d7b6f561d55557756a2deefc3a5056148defeb99
             - --push-retry=3
+            - --skip-tls-verify-registry=registry.kind.internal:5000
           volumeMounts:
             - name: workspace
               mountPath: /workspace
@@ -95,7 +94,7 @@ spec:
             claimName: alisa-docs-build-cache
         - name: registry
           secret:
-            secretName: alisa-registry
+            secretName: alisa-docs-registry-auth
             items:
               - key: .dockerconfigjson
                 path: config.json
