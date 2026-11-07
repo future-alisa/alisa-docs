@@ -34,6 +34,16 @@ git push origin main
 
 本次实际上线的应用、外网 URL 和管理后台见 [已部署服务与公网入口](/services/deployed)。
 
+## Argo CD 仓库代理与直连范围
+
+当前四个已部署应用对应的 GitHub 仓库均在 Argo CD 的 Settings → Repositories 中登记了服务器现有 HTTP 代理，并配置 `noProxy`；强制刷新仓库连接可核验实际连通性，不需要在应用代码中写 Git 代理。
+
+直连范围包含 `localhost`、`127.0.0.1`、`::1`、Kubernetes Service 域名（`.svc`、`.cluster.local`）、`.kind.internal`、`.alisa.local`、`registry.kind.internal`、宿主机内部别名以及 `10.0.0.0/8`、`172.16.0.0/12`、`192.168.0.0/16` 等私网地址。实际代理地址在 Argo CD 中维护，不把代理认证信息写入公开文档。
+
+这是仓库访问配置，影响 Git 拉取及相关 Helm/Kustomize 操作；构建 Job 和节点 kubelet 不会自动继承这些设置。文档镜像上传与节点拉取仍使用内网 Registry。若构建器需要下载外部依赖，应在构建 Job 中单独配置并保留内网直连范围。
+
+更新代理后先强制刷新仓库连接，再确认 Application 解析到预期 Git 提交，最后执行 Sync。参见 [Argo CD 官方仓库代理说明](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#configure-repositories-with-proxy)。
+
 ## 公共网关的现有发布流程
 
 `alisa-cloud` 的 `codex/alisa-infra-argocd` 分支包含 `deploy/kubernetes/alisa-infra*.yaml`。应用 `alisa-infra` 通过以下阶段发布网关：
