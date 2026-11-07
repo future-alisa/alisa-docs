@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: alisa-docs-registry-check
+  name: alisa-docs-registry-check-tls
   namespace: alisa-infra
 spec:
   backoffLimit: 0
@@ -18,18 +18,9 @@ spec:
         command:
         - node
         - -e
-        - 'const dns=require(''dns''),http=require(''http''),https=require(''https'');
-
-          for(const host of [''registry.kind.internal'',''alisa-registry.cpolar.top''])
-          dns.lookup(host,{all:true},(e,a)=>console.log(''DNS'',host,e?.code||a));
-
-          for(const u of [''http://registry.kind.internal:5000/v2/'',''https://alisa-registry.cpolar.top/v2/''])
-          {const r=(u.startsWith(''https'')?https:http).get(u,{timeout:12000},s=>{console.log(''HTTP'',u,s.statusCode);s.resume()});r.on(''timeout'',()=>r.destroy(new
-          Error(''timeout'')));r.on(''error'',e=>console.log(''ERROR'',u,e.message))}
-
-          setTimeout(()=>process.exit(0),18000);
-
-          '
+        - const https=require('https');const u='https://registry.kind.internal:5000/v2/';const
+          r=https.get(u,{rejectUnauthorized:false,family:4,timeout:12000},s=>{console.log('INTERNAL_TLS_STATUS',s.statusCode);s.resume()});r.on('timeout',()=>r.destroy(new
+          Error('timeout')));r.on('error',e=>console.log('ERROR',e.message));setTimeout(()=>process.exit(0),15000);
         resources:
           requests:
             cpu: 10m
