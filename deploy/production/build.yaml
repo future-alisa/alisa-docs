@@ -16,7 +16,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: alisa-docs-build-16c553e2ab64
+  name: alisa-docs-build-8ee334877a99
   namespace: alisa-infra
   annotations:
     argocd.argoproj.io/hook: PreSync
@@ -44,7 +44,7 @@ spec:
               tar -xzf /tmp/source.tar.gz -C /workspace/source --strip-components=1
           env:
             - name: SOURCE_REVISION
-              value: "16c553e2ab6432e6c67782d401960c5370163c67"
+              value: "8ee334877a99badfddada2b39b2dddd434573635"
           volumeMounts:
             - name: workspace
               mountPath: /workspace
@@ -62,6 +62,8 @@ spec:
           env:
             - name: DOCS_BASE
               value: "/docs/"
+            - name: DOCS_ARCHIVE_BUILD
+              value: "true"
             - name: NODE_OPTIONS
               value: --max-old-space-size=768
           resources:
@@ -80,7 +82,7 @@ spec:
           args:
             - --context=dir:///workspace/runtime
             - --dockerfile=Dockerfile
-            - --destination=alisa-registry.cpolar.top/alisa-docs:src-16c553e2ab64
+            - --destination=alisa-registry.cpolar.top/alisa-docs:src-8ee334877a99
             - --build-arg=RUNTIME_IMAGE=public.ecr.aws/nginx/nginx-unprivileged@sha256:44e74ca483234093081138b6d7b6f561d55557756a2deefc3a5056148defeb99
             - --push-retry=3
           volumeMounts:
