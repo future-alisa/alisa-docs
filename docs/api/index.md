@@ -1,5 +1,9 @@
 # API 入口与覆盖范围
 
+## 按业务项目开始
+
+先看 [SmallOKR API](/services/smallokr) 与 [Science Community API](/services/science-community)：统一列出资源、完整 URL、权限要求和请求示例。下面的六份页面保留底层控制器索引，用于查参数和源码位置，不再将每个微服务当成一个独立业务产品。
+
 ## 目前提供的内容
 
 这里提供从 Java 注解控制器生成的路径索引：HTTP 方法、服务 HTTP 路径、控制器方法、条件装配提示和对应提交的源码链接。

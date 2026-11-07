@@ -13,7 +13,7 @@
 
 ![Alisa 平台分层总览：公网入口分流到业务网关、门户与管理界面，业务服务按需使用注册配置、数据库、Redis、对象存储及邮件。](/diagrams/platform-overview.svg)
 
-图是逻辑职责图，不是集群实时拓扑；底层组件的具体使用者见[依赖表](/guide/middleware#业务服务实际依赖哪些组件)。
+图是逻辑职责图。完整的当前集群控制面、网络、存储及 Argo CD 组件见 [Kubernetes 内部组件与平台拓扑](/guide/kubernetes)；底层组件的具体使用者见[依赖表](/guide/middleware#业务服务实际依赖哪些组件)。
 
 ## 平台分成五层
 
@@ -24,6 +24,14 @@
 | 应用入口与业务服务 | alisa-gateway、alisa-user、SmallOKR 三服务、社区与聊天服务、Portal Go API | API 路由、身份处理、账号与业务规则 | 承担所有基础设施的运行与持久化 |
 | 中间件与外部依赖 | Nacos、MySQL、Redis、S3 兼容对象存储、SMTP；其他组件见清单 | 实例发现、配置分发、数据和文件存储、邮件投递 | 自动生成业务路由或替业务系统完成成员权限校验 |
 | 构建与交付 | GitHub/环境中的 Gitea、Maven/npm/Go 构建工具、Registry、Argo CD、Kubernetes、Podman | 源码版本、构建镜像、分发、声明式部署、运行与探针 | 将一次镜像构建成功等同于用户业务请求全部成功 |
+
+## 当前 Kubernetes 基础层
+
+2026-11-08 实际清单确认是单节点 `kind-control-plane`（节点 IP `10.89.0.2`），节点内运行 kubelet/containerd。kube-system 中有 API Server、etcd、scheduler、controller-manager、kindnet、kube-proxy 和两个 CoreDNS Pod。
+
+入口除了正在承载本期业务的 Traefik（MetalLB 地址 `10.89.0.201`），还有 Contour/Envoy（`10.89.0.212`）；存储有 local-path-provisioner 和 SeaweedFS 的 master、volume、filer、admin；Argo CD 则由 server、repo-server、application-controller、ApplicationSet、Redis、Dex 和通知控制器协作。
+
+这些组件不再笼统算成一个“K8s”：它们分别负责集群状态、调度运行、网络寻址、入口、持久化及交付控制。见 [真实组件表、Service 地址与交互图](/guide/kubernetes)。
 
 ## 应用服务职责
 
@@ -37,7 +45,8 @@
 | `community-service` | ScienceCommunity | 社区、成员、资料、频道讨论及按配置启用的附件存储 | `/community/**`；业务层执行成员/管理员/作者等权限判断 |
 | `transfer-service` | ScienceCommunity | 在线用户、群组与旧 STOMP/SockJS 聊天入口 | `/api/users/**`、`/ws/**`；会话级身份需单独验证 |
 | Portal Web + Go API | alisa-portal | 基础设施目录、部署清单生成和可选指标查询 | Web 同源代理 `/api/*`；当前管理员 API_TOKEN 体系独立于公共 user-service JWT |
-| 文档站 | alisa-docs | 架构、接口索引、接入与发布说明 | 静态文件站；浏览地址由文档站实际部署决定 |
+| 文档站 | alisa-docs | 架构、接口索引、接入与发布说明 | [https://alisa.vip.cpolar.cn/docs/](https://alisa.vip.cpolar.cn/docs/) |
+| 身份与租户管理控制台 | alisa-cloud / alisa-admin-web | 独立 React 控制台，调用账号服务 Bearer 管理 API | 源码已存在，当前部署清单未发现对应生产入口；不是 Portal 的别名 |
 
 `alisa-gateway`、`alisa-user` 是模块/镜像/Deployment 名；`gateway-service`、`user-service` 是服务发现注册名。`lb://` 和 Feign 使用注册名，Kubernetes Service 则有自己的名称与命名空间。
 
@@ -65,6 +74,8 @@ Maven/npm 包的构建与发布，和 OCI Registry 中的容器镜像分发是�
 - **部署控制面**：Argo CD 读取 Git 中的期望状态，Kubernetes 运行对应镜像。
 
 Nacos 的路由发布不会构建镜像；Argo CD 的 Deployment 同步也不会自动把运行中的 Nacos 业务配置替换成 Git 里的示例。
+
+服务介绍按业务项目组织：目标、阶段成果、待办和跟踪统一见 [SmallOKR](/services/smallokr)；社区、资料、聊天和在线状态统一见 [Science Community](/services/science-community)。
 
 ## 数据与权限归属
 

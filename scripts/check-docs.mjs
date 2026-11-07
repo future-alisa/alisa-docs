@@ -15,6 +15,23 @@ for (const service of services) {
   const doc = service.doc.endsWith('/') ? `${service.doc}index.md` : `${service.doc}.md`
   await access(path.join(root, 'docs', doc))
 }
+const directory = await readJson('docs/services/groups.json')
+const groupedNames = new Set()
+const groupIds = new Set()
+for (const group of directory) {
+  if (groupIds.has(group.name)) throw new Error(`Duplicate directory group: ${group.name}`)
+  groupIds.add(group.name)
+  for (const member of group.services) {
+    if (!names.has(member) || groupedNames.has(member)) throw new Error(`Invalid directory membership: ${member}`)
+    groupedNames.add(member)
+  }
+  for (const endpoint of group.paths) {
+    const url = new URL(endpoint)
+    if (url.protocol !== 'https:' || url.hostname !== 'alisa.vip.cpolar.cn' || url.username || url.password) throw new Error(`Invalid public service URL: ${group.name}`)
+  }
+  await access(path.join(root, 'docs', `${group.doc}.md`))
+}
+if (groupedNames.size !== names.size) throw new Error('Directory groups must cover every catalog service')
 if (index.schemaVersion !== 1 || !index.endpoints?.length) throw new Error('Missing generated API index')
 const methods = new Set(['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS', 'HEAD', 'TRACE', 'ANY'])
 for (const source of sources) {

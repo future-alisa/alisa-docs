@@ -1,0 +1,114 @@
+[
+  {
+    "name": "gateway-service",
+    "title": "公共网关",
+    "project": "alisa-cloud",
+    "port": 8100,
+    "description": "统一入口、鉴权、身份传递和动态业务路由。",
+    "paths": [
+      "https://alisa.vip.cpolar.cn/alisa-gateway"
+    ],
+    "doc": "/operations/gateway",
+    "services": [
+      "gateway-service"
+    ],
+    "status": "已部署"
+  },
+  {
+    "name": "user-service",
+    "title": "统一账号",
+    "project": "alisa-cloud",
+    "port": 8084,
+    "description": "账号、身份提供者与按配置启用的授权能力。",
+    "paths": [
+      "https://alisa.vip.cpolar.cn/alisa-gateway/api/v1/user",
+      "https://alisa.vip.cpolar.cn/alisa-gateway/api/v1/authorization"
+    ],
+    "doc": "/api/generated/account",
+    "services": [
+      "user-service"
+    ],
+    "status": "已部署"
+  },
+  {
+    "name": "smallokr",
+    "title": "SmallOKR",
+    "project": "SmallOKR",
+    "description": "目标、阶段成果、待办与跟踪的统一业务 API 介绍。",
+    "services": [
+      "target-service",
+      "todo-service",
+      "trace-service"
+    ],
+    "paths": [
+      "https://alisa.vip.cpolar.cn/alisa-gateway/target-service/api/v1",
+      "https://alisa.vip.cpolar.cn/alisa-gateway/api/v1/todo",
+      "https://alisa.vip.cpolar.cn/alisa-gateway/api/v1/trace"
+    ],
+    "doc": "/services/smallokr",
+    "status": "后端部署待确认"
+  },
+  {
+    "name": "science-community",
+    "title": "Science Community",
+    "project": "Science Community",
+    "description": "社区、资料、频道讨论、聊天与在线状态，以及用户站和社区管理。",
+    "services": [
+      "community-service",
+      "transfer-service",
+      "science-web"
+    ],
+    "paths": [
+      "https://alisa.vip.cpolar.cn/science",
+      "https://alisa.vip.cpolar.cn/science/community-api",
+      "https://alisa.vip.cpolar.cn/science-chat/ws"
+    ],
+    "doc": "/services/science-community",
+    "status": "已部署"
+  },
+  {
+    "name": "alisa-portal-web",
+    "title": "平台门户与管理后台",
+    "project": "alisa-portal",
+    "port": 3000,
+    "description": "平台工作台、服务入口、租户与部署申请管理界面。",
+    "paths": [
+      "https://alisa.vip.cpolar.cn/"
+    ],
+    "doc": "/services/portal",
+    "services": [
+      "alisa-portal-web"
+    ],
+    "status": "已部署"
+  },
+  {
+    "name": "alisa-portal-api",
+    "title": "门户后端",
+    "project": "alisa-portal",
+    "port": 8080,
+    "description": "门户目录、租户、配额和操作记录；独立管理员令牌与持久化存储。",
+    "paths": [
+      "https://alisa.vip.cpolar.cn/api/health"
+    ],
+    "doc": "/services/portal",
+    "services": [
+      "alisa-portal-api"
+    ],
+    "status": "已部署"
+  },
+  {
+    "name": "alisa-docs",
+    "title": "平台开发文档",
+    "project": "alisa-docs",
+    "port": 8080,
+    "description": "公开架构、服务、接口和开发运维文档。",
+    "paths": [
+      "https://alisa.vip.cpolar.cn/docs/"
+    ],
+    "doc": "/services/deployed",
+    "services": [
+      "alisa-docs"
+    ],
+    "status": "已部署"
+  }
+]

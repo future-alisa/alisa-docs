@@ -1,6 +1,54 @@
-# Science Community：用户站与社区管理
+# Science Community API 与应用
 
 项目：[ScienceCommunity](https://github.com/future-alisa/ScienceCommunity)。当前 Argo CD 应用 `science-community` 读取 `codex/k8s-deploy` 分支的 `deploy/kubernetes`，运行在同名命名空间。2026-11-07 核验 web、community、transfer 三个 Deployment 均 1/1 就绪。
+
+## 统一服务概览
+
+社区、资料、频道讨论、聊天与在线状态在本项目下统一介绍；后台仍由 community-service、transfer-service 与 Next.js Web 协作，不是合并进一个进程。
+
+| 入口类型 | 完整地址 | 说明 |
+| --- | --- | --- |
+| 用户站根地址 | `https://alisa.vip.cpolar.cn/science` | 页面导航与用户交互 |
+| 社区 HTTP API 根地址 | `https://alisa.vip.cpolar.cn/science/community-api` | Next.js 同源代理到 community-service |
+| 聊天 / 在线状态 HTTP 根地址 | `https://alisa.vip.cpolar.cn/science-chat` | 独立 HTTPRoute 到 transfer-service |
+| SockJS / STOMP 连接 | `https://alisa.vip.cpolar.cn/science-chat/ws` | 由 SockJS/STOMP 客户端按此基址协商传输；不假定原生 WebSocket 路径与 SockJS 根路径相同，仍需会话身份验证 |
+| 统一账号 API 根地址 | `https://alisa.vip.cpolar.cn/alisa-gateway/api/v1/user` | 社区应用复用公共账号身份 |
+
+## 按资源调用
+
+| 资源 | HTTP 请求（完整 URL） | 访问说明 |
+| --- | --- | --- |
+| 社区 | `GET https://alisa.vip.cpolar.cn/science/community-api/community/getAll` | 本次验证公开列表可达 |
+| 我的社区 | `GET https://alisa.vip.cpolar.cn/science/community-api/community/getAllByUser` | 用户身份与业务权限 |
+| 当前社区访问能力 | `GET https://alisa.vip.cpolar.cn/science/community-api/communityuser/access?communityId={communityId}` | 用于取得当前用户的社区角色/能力，不能由前端自填角色 |
+| 资料文档 | `GET https://alisa.vip.cpolar.cn/science/community-api/document/getAllByCommunityId?communityId={communityId}` | 成员/可见性与实际资源权限 |
+| 频道 | `GET https://alisa.vip.cpolar.cn/science/community-api/channel/getAllByCommunityId?communityId={communityId}` | 社区成员与频道能力 |
+| 频道讨论记录 | `GET https://alisa.vip.cpolar.cn/science/community-api/channel/{channelId}/messages` | 持久化讨论与频道访问检查 |
+| 文件上传 | `POST https://alisa.vip.cpolar.cn/science/community-api/storage` | multipart file、用途与大小检查，服务端连接对象存储 |
+| 在线用户 | `GET https://alisa.vip.cpolar.cn/science-chat/api/users/online` | 旧 transfer HTTP 接口；身份与访问策略需独立核查 |
+| 用户群组 | `GET https://alisa.vip.cpolar.cn/science-chat/api/users/groups/{username}` | 旧 transfer HTTP 接口，不因与社区同一项目就自动具有同样的成员授权 |
+| 聊天连接探测 | `GET https://alisa.vip.cpolar.cn/science-chat/ws/info` | 只验证 SockJS 元信息，不验证登录或消息投递 |
+
+社区的持久化频道讨论 API 与 transfer 的旧 STOMP 通道是不同实现。`/science-chat` 当前直达 transfer，不自动经过 Spring Gateway 的 JWT 校验；上线客户端需单独验证会话身份、授权和订阅范围。完整控制器索引见 [社区资源](/api/generated/community) 与 [聊天/在线状态](/api/generated/transfer)。
+
+## 权限与请求示例
+
+受保护社区 API 使用业务 Bearer 凭据，并由服务端检查成员、管理员或作者权限；不能用一个前端 role 字段代替授权。社区角色不是统一业务租户角色，也不是 Portal 管理令牌。详情见 [认证与授权](/operations/authentication)。
+
+已验证的公开读取请求：
+
+```http
+GET https://alisa.vip.cpolar.cn/science/community-api/community/getAll
+Accept: application/json
+```
+
+需要登录的读取请求示例（communityId 用自己的合法资源 ID 替换）：
+
+```bash
+curl -H "Authorization: Bearer $ACCESS_TOKEN"   'https://alisa.vip.cpolar.cn/science/community-api/document/getAllByCommunityId?communityId=YOUR_COMMUNITY_ID'
+```
+
+资源字段、创建/更新请求体与返回模型以 DTO 为准，不自动宣称支持 Microsoft Graph 的 scope 名称、OData 查询或统一分页。文件读写对接见 [存储模块](/operations/storage)，关系数据见 [数据模块](/operations/data)。
 
 ## 直接访问
 

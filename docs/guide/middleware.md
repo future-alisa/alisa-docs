@@ -2,6 +2,8 @@
 
 本页区分“环境中有组件”“源码已使用”和“配置后才启用”。当前没有重新探测全部服务器端口或核验每个组件的运行健康，不能把下面的清单当成实时监控。
 
+当前 Kubernetes 组件与真实 Service 地址已单独核验，见 [内部组件与平台拓扑](/guide/kubernetes)。具体对接见 [存储](/operations/storage)、[数据](/operations/data)、[认证](/operations/authentication) 和 [租户管理](/operations/tenancy)。
+
 ## 接入与运行基础设施
 
 | 组件 | 证据/状态 | 职责 | 开发时怎么对接 |

@@ -23,6 +23,7 @@ export default defineConfig({
       { text: '了解系统', items: [
         { text: '开始使用', link: '/guide/getting-started' },
         { text: '平台架构与服务职责', link: '/guide/architecture' },
+        { text: 'Kubernetes 内部组件与拓扑', link: '/guide/kubernetes' },
         { text: '中间件与基础设施', link: '/guide/middleware' },
         { text: '组件交互流程', link: '/guide/interactions' },
         { text: '开发接入指南', link: '/guide/development-integration' },
@@ -31,19 +32,18 @@ export default defineConfig({
       { text: '服务与接口', items: [
         { text: '服务目录', link: '/services/' },
         { text: '已部署服务与公网入口', link: '/services/deployed' },
-        { text: 'Science Community 与社区管理', link: '/services/science-community' },
+        { text: 'SmallOKR API', link: '/services/smallokr' },
+        { text: 'Science Community API 与应用', link: '/services/science-community' },
         { text: '平台门户与管理后台', link: '/services/portal' },
         { text: 'API 入口与覆盖范围', link: '/api/' },
-        { text: '统一账号与授权', link: '/api/generated/account' },
-        { text: '目标与阶段成果', link: '/api/generated/target' },
-        { text: '待办', link: '/api/generated/todo' },
-        { text: '跟踪', link: '/api/generated/trace' },
-        { text: '社区', link: '/api/generated/community' },
-        { text: '聊天与在线状态', link: '/api/generated/transfer' }
+        { text: '统一账号与授权', link: '/api/generated/account' }
       ] },
       { text: '接入与运维', items: [
-        { text: '网关与动态路由', link: '/operations/gateway' },
-        { text: '认证与授权约定', link: '/operations/authentication' },
+        { text: '网关、Caddy 与动态路由', link: '/operations/gateway' },
+        { text: '存储接入', link: '/operations/storage' },
+        { text: '数据接入', link: '/operations/data' },
+        { text: '认证与授权及服务地址', link: '/operations/authentication' },
+        { text: '租户管理办法', link: '/operations/tenancy' },
         { text: '配置归属与对照', link: '/operations/configuration' },
         { text: '镜像与 Argo CD', link: '/operations/deployment' },
         { text: '排障与回滚', link: '/operations/troubleshooting' },
