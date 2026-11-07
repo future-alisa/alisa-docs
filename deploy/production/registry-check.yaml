@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: alisa-docs-registry-check
+  namespace: alisa-infra
+spec:
+  backoffLimit: 0
+  activeDeadlineSeconds: 90
+  template:
+    spec:
+      restartPolicy: Never
+      automountServiceAccountToken: false
+      dnsPolicy: Default
+      containers:
+      - name: check
+        image: node:22-alpine
+        imagePullPolicy: IfNotPresent
+        command:
+        - node
+        - -e
+        - 'const dns=require(''dns''),http=require(''http''),https=require(''https'');
+
+          for(const host of [''registry.kind.internal'',''alisa-registry.cpolar.top''])
+          dns.lookup(host,{all:true},(e,a)=>console.log(''DNS'',host,e?.code||a));
+
+          for(const u of [''http://registry.kind.internal:5000/v2/'',''https://alisa-registry.cpolar.top/v2/''])
+          {const r=(u.startsWith(''https'')?https:http).get(u,{timeout:12000},s=>{console.log(''HTTP'',u,s.statusCode);s.resume()});r.on(''timeout'',()=>r.destroy(new
+          Error(''timeout'')));r.on(''error'',e=>console.log(''ERROR'',u,e.message))}
+
+          setTimeout(()=>process.exit(0),18000);
+
+          '
+        resources:
+          requests:
+            cpu: 10m
+            memory: 32Mi
+          limits:
+            cpu: 100m
+            memory: 64Mi
