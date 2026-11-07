@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 790" role="img" aria-labelledby="title desc"><title id="title">Alisa 平台分层与入口分流</title><desc id="desc">客户端经 cpolar、Caddy 和 Traefik。Traefik 将业务 API 交给 Spring Cloud Gateway，门户和管理界面可独立分流。业务服务按需使用 Nacos、MySQL、Redis、S3 和 SMTP；底层使用关系详见正文表。</desc><defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#526d82"/></marker></defs><rect width="1280" height="790" rx="18" fill="#f5f8fb"/><style>text{font-family:system-ui,'PingFang SC','Microsoft YaHei',sans-serif;fill:#20384d}.caption{font-size:14px;fill:#526d82}.name{font-size:18px;font-weight:650}.small{font-size:13px;fill:#526d82}.edge{fill:none;stroke:#526d82;stroke-width:2;marker-end:url(#arrow)}</style>
+<text x="36" y="35" class="name">请求入口：公网接入与集群路由</text>
+<rect x="36" y="62" width="205" height="88" rx="10" fill="#fff" stroke="#c8d5df"/>
+<text class="name" x="52" y="91">客户端</text>
+<text class="small" x="52" y="115">移动端 / Web / SDK</text>
+<rect x="276" y="62" width="205" height="88" rx="10" fill="#fff" stroke="#c8d5df"/>
+<text class="name" x="292" y="91">cpolar</text>
+<text class="small" x="292" y="115">公网接入 / 内网穿透</text>
+<rect x="516" y="62" width="205" height="88" rx="10" fill="#fff" stroke="#c8d5df"/>
+<text class="name" x="532" y="91">Caddy</text>
+<text class="small" x="532" y="115">路径、Host 与 TLS</text>
+<rect x="756" y="62" width="205" height="88" rx="10" fill="#fff" stroke="#c8d5df"/>
+<text class="name" x="772" y="91">Traefik</text>
+<text class="small" x="772" y="115">Gateway API / HTTPRoute</text>
+<path class="edge" d="M241 106 H276"/>
+<path class="edge" d="M481 106 H516"/>
+<path class="edge" d="M721 106 H756"/>
+<rect x="36" y="236" width="330" height="98" rx="10" fill="#e3f2ef" stroke="#c8d5df"/>
+<text class="name" x="52" y="265">Spring Cloud Gateway</text>
+<text class="small" x="52" y="289">业务 API：认证与动态路由</text>
+<text class="small" x="52" y="310">本地账号路由 + Nacos 业务路由</text>
+<rect x="446" y="236" width="330" height="98" rx="10" fill="#fff" stroke="#c8d5df"/>
+<text class="name" x="462" y="265">Portal / 文档等应用入口</text>
+<text class="small" x="462" y="289">独立的应用和认证边界</text>
+<text class="small" x="462" y="310">不自动经过业务 JWT 网关</text>
+<rect x="856" y="236" width="370" height="98" rx="10" fill="#fff" stroke="#c8d5df"/>
+<text class="name" x="872" y="265">运维与存储协议入口</text>
+<text class="small" x="872" y="289">Argo CD / Nacos / Registry 等</text>
+<text class="small" x="872" y="310">各自认证；按环境配置分流</text>
+<path class="edge" d="M858 150 V190 H201 V236"/>
+<text class="caption" x="229" y="181">业务 API</text>
+<path class="edge" d="M858 190 H611 V236"/>
+<text class="caption" x="630" y="216">Web 应用</text>
+<path class="edge" d="M858 190 H1041 V236"/>
+<text class="caption" x="1060" y="184">管理与协议入口</text>
+<rect x="36" y="418" width="280" height="104" rx="10" fill="#fff" stroke="#c8d5df"/>
+<text class="name" x="52" y="447">user-service</text>
+<text class="small" x="52" y="471">统一账号与身份提供者</text>
+<text class="small" x="52" y="492">可选 OAuth / 授权 / 租户能力</text>
+<rect x="376" y="418" width="280" height="104" rx="10" fill="#fff" stroke="#c8d5df"/>
+<text class="name" x="392" y="447">SmallOKR</text>
+<text class="small" x="392" y="471">target / todo / trace</text>
+<text class="small" x="392" y="492">目标、待办和跟踪业务</text>
+<rect x="716" y="418" width="350" height="104" rx="10" fill="#fff" stroke="#c8d5df"/>
+<text class="name" x="732" y="447">ScienceCommunity</text>
+<text class="small" x="732" y="471">community / transfer</text>
+<text class="small" x="732" y="492">社区、文件和聊天相关业务</text>
+<path class="edge" d="M201 334 V374 H176 V418"/>
+<path class="edge" d="M201 374 H516 V418"/>
+<path class="edge" d="M516 374 H891 V418"/>
+<text x="36" y="580" class="name">按需依赖：具体使用者与启用状态见正文表</text>
+<rect x="36" y="606" width="220" height="90" rx="10" fill="#edf2f8" stroke="#c8d5df"/>
+<text class="name" x="52" y="635">Nacos</text>
+<text class="small" x="52" y="659">服务发现 / 网关路由配置</text>
+<rect x="276" y="606" width="220" height="90" rx="10" fill="#edf2f8" stroke="#c8d5df"/>
+<text class="name" x="292" y="635">MySQL</text>
+<text class="small" x="292" y="659">账号与各业务关系数据</text>
+<rect x="516" y="606" width="220" height="90" rx="10" fill="#edf2f8" stroke="#c8d5df"/>
+<text class="name" x="532" y="635">Redis</text>
+<text class="small" x="532" y="659">验证码 / TTL / 限流状态</text>
+<rect x="756" y="606" width="220" height="90" rx="10" fill="#edf2f8" stroke="#c8d5df"/>
+<text class="name" x="772" y="635">S3 兼容存储</text>
+<text class="small" x="772" y="659">附件、封面与预签名访问</text>
+<rect x="996" y="606" width="220" height="90" rx="10" fill="#edf2f8" stroke="#c8d5df"/>
+<text class="name" x="1012" y="635">SMTP</text>
+<text class="small" x="1012" y="659">服务端邮件投递</text>
+<text class="caption" x="36" y="741">部署控制面：Git → 构建 / 测试 → Registry → 部署 Git → Argo CD → Kubernetes</text><text class="small" x="36" y="766">逻辑职责图 · 不代表实时运行状态 · Portal 管理令牌、业务 JWT 与存储签名分别管理</text></svg>

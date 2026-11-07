@@ -6,6 +6,10 @@ Alisa Docs 是多个项目的统一文档入口，源码放在 [alisa-docs](http
 
 | 你要做什么 | 从哪里开始 |
 | --- | --- |
+| 了解平台分层和各项职责 | [平台架构](/guide/architecture) |
+| 查中间件用途与真实使用方 | [中间件清单](/guide/middleware) |
+| 了解一次请求、文件上传和发布链路 | [组件交互](/guide/interactions) |
+| 开发新服务并接入认证、路由和存储 | [开发接入指南](/guide/development-integration) |
 | 查一个服务由哪个项目维护 | [服务目录](/services/) |
 | 找 HTTP 接口和控制器 | [API 索引](/api/) |
 | 把新业务路径接到公共网关 | [网关与动态路由](/operations/gateway) |

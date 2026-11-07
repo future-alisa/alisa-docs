@@ -16,6 +16,9 @@ hero:
       text: 查找接口
       link: /api/
 features:
+  - title: 理解平台
+    details: 区分入口、业务服务、中间件和交付控制面，按步骤接入现有能力。
+    link: /guide/architecture
   - title: 找到服务
     details: 按项目查看职责、源码默认端口与网关路径，明确公共能力和业务边界。
     link: /services/

@@ -13,6 +13,7 @@ export default defineConfig({
     siteTitle: 'Alisa Docs',
     nav: [
       { text: '开始使用', link: '/guide/getting-started' },
+      { text: '平台架构', link: '/guide/architecture' },
       { text: '服务目录', link: '/services/' },
       { text: '接口索引', link: '/api/' },
       { text: '部署运维', link: '/operations/deployment' }
@@ -20,7 +21,10 @@ export default defineConfig({
     sidebar: [
       { text: '了解系统', items: [
         { text: '开始使用', link: '/guide/getting-started' },
-        { text: '架构与项目边界', link: '/guide/architecture' },
+        { text: '平台架构与服务职责', link: '/guide/architecture' },
+        { text: '中间件与基础设施', link: '/guide/middleware' },
+        { text: '组件交互流程', link: '/guide/interactions' },
+        { text: '开发接入指南', link: '/guide/development-integration' },
         { text: '本地开发', link: '/guide/local-development' }
       ] },
       { text: '服务与接口', items: [
@@ -36,6 +40,7 @@ export default defineConfig({
       { text: '接入与运维', items: [
         { text: '网关与动态路由', link: '/operations/gateway' },
         { text: '认证与授权约定', link: '/operations/authentication' },
+        { text: '配置归属与对照', link: '/operations/configuration' },
         { text: '镜像与 Argo CD', link: '/operations/deployment' },
         { text: '排障与回滚', link: '/operations/troubleshooting' },
         { text: '维护这份文档', link: '/guide/contributing' }

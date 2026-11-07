@@ -31,6 +31,14 @@ python3 scripts/sync-api.py --repos-root /path/to/Repos
 
 索引包含服务 HTTP 路径与源码链接，不是完整 OpenAPI 或线上可用性声明。正文见 [接口入口](docs/api/index.md) 和 [维护指南](docs/guide/contributing.md)。
 
+## 平台架构专题
+
+- [平台分层与服务职责](docs/guide/architecture.md)
+- [中间件、状态与使用方](docs/guide/middleware.md)
+- [请求、认证、文件与部署交互](docs/guide/interactions.md)
+- [新服务和客户端开发接入](docs/guide/development-integration.md)
+- [配置项与凭据归属](docs/operations/configuration.md)
+
 ## 项目结构
 
 ```text
