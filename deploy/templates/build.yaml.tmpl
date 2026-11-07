@@ -27,9 +27,7 @@ spec:
     spec:
       restartPolicy: Never
       automountServiceAccountToken: false
-      dnsPolicy: None
-      dnsConfig:
-        nameservers: ["223.5.5.5", "1.1.1.1"]
+      dnsPolicy: Default
       initContainers:
         - name: source
           image: alpine/git:2.47.2
@@ -83,6 +81,7 @@ spec:
             - --destination=@@image@@
             - --build-arg=RUNTIME_IMAGE=@@runtimeImage@@
             - --push-retry=3
+            - --skip-tls-verify-registry=registry.kind.internal:5000
           volumeMounts:
             - name: workspace
               mountPath: /workspace
