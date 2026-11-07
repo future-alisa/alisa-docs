@@ -20,3 +20,8 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
+      - name: Build source archive mode under subpath
+        run: npm run build
+        env:
+          DOCS_ARCHIVE_BUILD: 'true'
+          DOCS_BASE: /docs/

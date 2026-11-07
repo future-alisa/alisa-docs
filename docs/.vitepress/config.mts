@@ -6,7 +6,7 @@ export default defineConfig({
   description: 'Alisa 服务目录、接口索引与部署文档',
   base: process.env.DOCS_BASE || '/',
   cleanUrls: true,
-  lastUpdated: true,
+  lastUpdated: process.env.DOCS_ARCHIVE_BUILD !== 'true',
   head: [['link', { rel: 'icon', type: 'image/svg+xml', href: `${process.env.DOCS_BASE || '/'}logo.svg` }]],
   themeConfig: {
     logo: '/logo.svg',

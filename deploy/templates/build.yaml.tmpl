@@ -62,6 +62,8 @@ spec:
           env:
             - name: DOCS_BASE
               value: "@@docsBase@@"
+            - name: DOCS_ARCHIVE_BUILD
+              value: "true"
             - name: NODE_OPTIONS
               value: --max-old-space-size=768
           resources:

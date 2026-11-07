@@ -6,6 +6,7 @@ COPY docs ./docs
 COPY scripts ./scripts
 ARG DOCS_BASE=/
 ENV DOCS_BASE=${DOCS_BASE}
+ENV DOCS_ARCHIVE_BUILD=true
 RUN npm run build
 
 FROM nginx:alpine
