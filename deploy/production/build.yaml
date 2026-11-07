@@ -14,7 +14,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: alisa-docs-build-8276a3114d0f
+  name: alisa-docs-build-212c6ea3a87d
   namespace: alisa-infra
   annotations:
     argocd.argoproj.io/hook: Sync
@@ -40,7 +40,7 @@ spec:
               tar -xzf /tmp/source.tar.gz -C /workspace/source --strip-components=1
           env:
             - name: SOURCE_REVISION
-              value: "8276a3114d0fbdc7a706d1f0b5a2209d281e9227"
+              value: "212c6ea3a87d981e57ca60d95e6af91e82f453f4"
           volumeMounts:
             - name: workspace
               mountPath: /workspace
@@ -78,7 +78,7 @@ spec:
           args:
             - --context=dir:///workspace/runtime
             - --dockerfile=Dockerfile
-            - --destination=registry.kind.internal:5000/alisa-docs:src-8276a3114d0f
+            - --destination=registry.kind.internal:5000/alisa-docs:src-212c6ea3a87d
             - --build-arg=RUNTIME_IMAGE=public.ecr.aws/nginx/nginx-unprivileged@sha256:44e74ca483234093081138b6d7b6f561d55557756a2deefc3a5056148defeb99
             - --push-retry=3
             - --skip-tls-verify-registry=registry.kind.internal:5000
