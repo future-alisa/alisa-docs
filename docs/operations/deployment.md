@@ -46,7 +46,7 @@ git push origin main
 
 ## 公共网关的现有发布流程
 
-`alisa-cloud` 的 `codex/alisa-infra-argocd` 分支包含 `deploy/kubernetes/alisa-infra*.yaml`。应用 `alisa-infra` 通过以下阶段发布网关：
+`alisa-cloud` 的 `main` 分支包含 `deploy/kubernetes/alisa-infra*.yaml`。应用 `alisa-infra` 通过以下阶段发布网关：
 
 1. PreSync 构建任务下载固定提交的官方源码归档，运行 Maven 测试与打包。
 2. 使用集群已有 Registry Secret 构建并推送固定源码版本标签的镜像。

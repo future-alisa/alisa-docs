@@ -79,6 +79,6 @@ SeaweedFS 的 Master、Volume、Filer、S3 和 WebDAV 面向不同协议与职�
 
 - [账号验证码与 Redis](https://github.com/future-alisa/alisa-cloud/blob/main/alisa-user/src/main/java/com/alisa/user/service/VerificationCodeService.java)
 - [SMTP 自动配置](https://github.com/future-alisa/alisa-cloud/blob/main/alisa-notification/src/main/java/com/alisa/notification/mail/MailNotificationAutoConfiguration.java)
-- [网关动态路由代码](https://github.com/future-alisa/alisa-cloud/tree/codex/alisa-infra-argocd/alisa-gateway/src/main/java/com/alisa/routes)
+- [网关动态路由代码](https://github.com/future-alisa/alisa-cloud/tree/main/alisa-gateway/src/main/java/com/alisa/routes)
 - [社区对象存储适配](https://github.com/future-alisa/ScienceCommunity/blob/main/science_community/community_service/src/main/java/com/alisa/service/ObjectStorageService.java)
 - [Portal 当前存储、认证和可选监控说明](https://github.com/future-alisa/alisa-portal/blob/main/README.md)
