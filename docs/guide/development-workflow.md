@@ -22,13 +22,32 @@
 
 `main` 是长期主线；功能或修复使用短期分支，合入后删除。部署跟踪 main 的项目，不再保留一份长期独立的部署分支。某个应用仍跟踪其他分支时，先核对实际配置，再单独安排迁移，不能只改文档就假定部署已切换。
 
+采用常见的主线开发 / GitHub Flow：`main` 保持可发布，任务在短期分支完成后经 PR 合回。这里不引入额外的长期 develop 分支；只有确实需要维护多个发布版本时，再单独约定 release 分支策略。
+
+### 分支命名
+
+格式：`类型/任务编号-简短说明`。类型与说明使用小写英文，单词用短横线分隔；有任务编号时关联同一 Issue，没有编号时可直接写说明。这是团队采用的常见命名约定，不是 Git 强制语法。
+
+| 类型 | 用途 | 示例 |
+| --- | --- | --- |
+| `feature/` | 新功能 | `feature/123-todo-filter` |
+| `fix/` | 日常缺陷修复 | `fix/124-tenant-validation` |
+| `hotfix/` | 生产紧急修复 | `hotfix/125-login-failure` |
+| `docs/` | 文档更新 | `docs/126-development-workflow` |
+| `refactor/` | 不改变外部行为的重构 | `refactor/127-token-validation` |
+| `chore/` | 构建、工具与依赖维护 | `chore/128-update-build-tools` |
+
+分支名描述工作内容，不使用个人姓名、工具或代理名称作为前缀。普通任务不创建长期 release/deployment 分支。分支类型与提交类型含义对应，但两者不要求完全一致：同一 feature 分支也可包含 test、docs 提交。
+
+命名和协作原则参考 [GitHub Flow](https://docs.github.com/en/get-started/using-github/github-flow) 与 [Microsoft Git 分支指南](https://learn.microsoft.com/en-us/azure/devops/repos/git/git-branching-guidance)。
+
 在工作区干净、已确认当前改动归属后：
 
 ```bash
 git status --short
 git switch main
 git pull --ff-only
-git switch -c codex/todo-filter
+git switch -c feature/todo-filter
 ```
 
 如果有未提交改动，先提交到合适分支或明确保存，再切换；不要用 reset、clean 或覆盖文件来“清理”别人的工作。多个任务同时进行时可使用独立 worktree，不在同一工作区混合不同任务。
@@ -69,7 +88,7 @@ git diff
 git add path/to/changed-file
 git diff --cached
 git commit -m "fix(todo): restrict filtering to selected tenant"
-git push -u origin codex/todo-filter
+git push -u origin feature/todo-filter
 ```
 
 提交信息建议采用 `type(scope): 摘要`，常用类型为 feat、fix、docs、refactor、test、chore，scope 填业务或模块名。
@@ -102,7 +121,7 @@ git push -u origin codex/todo-filter
 ```bash
 git switch main
 git pull --ff-only
-git branch -d codex/todo-filter
+git branch -d feature/todo-filter
 ```
 
 确认已合入、没有其他工作区或部署继续依赖该分支后，再从 GitHub 或 Git 删除远端短期分支。Squash 合并时 `git branch -d` 可能因提交图不同而拒绝；先核对改动已完整进入 main，不直接将拒绝当成需要强制删除。
@@ -143,7 +162,7 @@ Argo CD 的仓库代理用于 Git 拉取及清单生成；构建 Job 和 kubelet
 - 代码/镜像问题：在 Git 中恢复上一已验证镜像与配置，提交后由 Argo CD 同步；不要只在集群手改后留下 Git 漂移。
 - Nacos 路由问题：恢复有效历史配置并发布，检查每个网关实例加载结果。
 - 数据迁移问题：按事先评估的兼容与恢复方案处理；回退镜像不会自动恢复数据库、对象文件或 PVC。
-- 紧急修复：从主线创建短期 hotfix 分支，完成最小必要验证并正常合回 main；临时运维改动需及时补回 Git 和文档。
+- 紧急修复：从对应生产版本创建 `hotfix/<任务编号>-<说明>` 分支（若生产即 main 最新版则从 main 创建），完成必要验证和评审后合回 main；存在维护中的 release 分支时也需同步修复。临时运维改动及时补回 Git 和文档。
 
 不通过强推 main、删除数据、重置整个集群或随意更换 JWT_SECRET 来代替回滚。涉及凭据轮换时另行安排兼容窗口和调用方迁移。
 
