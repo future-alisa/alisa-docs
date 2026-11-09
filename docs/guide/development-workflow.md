@@ -4,6 +4,14 @@
 
 本文定义日常协作约定，不表示所有仓库都已配置强制评审、分支保护或全自动流水线。各项目的实际构建入口和功能状态仍以源码、CI 与 Argo CD 配置为准。
 
+## 工作流总览
+
+![标准开发流程：上半部分为 GitHub Flow 分支协作，下半部分为平台 GitOps 发布；评审未通过返回开发，发布验证失败进入回滚与重新发布。](/diagrams/development-workflow.svg)
+
+[打开完整工作流图](/diagrams/development-workflow.svg)。图的上半部分是 GitHub Flow 开发协作，下半部分是本平台增加的发布与运维步骤。Argo CD 不是 GitHub Flow 的组成部分；镜像构建可以在 CI 或应用的 Sync Hook 中执行，以实际流水线为准。
+
+`main` 保持可发布，不意味着每次合入都必须立即自动上线。本文采用的分支类型、提交格式、发布门禁与记录要求是团队约定，来源与边界见 [参考来源](#参考来源与适用边界)。
+
 ## 1. 先明确改什么、怎样验收
 
 动手前在任务或 Issue 中记录具体触发场景、期望结果和影响范围，并在 PR 中关联；没有单独任务系统时，至少在 PR 描述中保留验收条件。确认以下信息：
@@ -22,7 +30,7 @@
 
 `main` 是长期主线；功能或修复使用短期分支，合入后删除。部署跟踪 main 的项目，不再保留一份长期独立的部署分支。某个应用仍跟踪其他分支时，先核对实际配置，再单独安排迁移，不能只改文档就假定部署已切换。
 
-采用常见的主线开发 / GitHub Flow：`main` 保持可发布，任务在短期分支完成后经 PR 合回。这里不引入额外的长期 develop 分支；只有确实需要维护多个发布版本时，再单独约定 release 分支策略。
+采用 GitHub Flow：`main` 保持可发布，任务在短期分支完成后经 PR 合回。这里不引入额外的长期 develop 分支；只有确实需要维护多个发布版本时，再单独约定 release 分支策略。
 
 ### 分支命名
 
@@ -91,7 +99,7 @@ git commit -m "fix(todo): restrict filtering to selected tenant"
 git push -u origin feature/todo-filter
 ```
 
-提交信息建议采用 `type(scope): 摘要`，常用类型为 feat、fix、docs、refactor、test、chore，scope 填业务或模块名。
+提交信息参考 [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/)，采用 `type(scope): 摘要`，scope 填业务或模块名。规范明确 feat、fix 的含义并允许其他类型；docs、refactor、test、chore 是本团队选用的常见类型，不是 GitHub Flow 的强制要求。
 
 按文件暂存并检查 staged diff，不盲目提交整个目录的 `.env`、日志或数据文件。提交信息描述具体行为；PR 描述让未看过聊天记录的人也能理解问题、改动、验证和发布影响。
 
@@ -185,3 +193,19 @@ git push origin main
 ## 完成标准
 
 需求已实现，相关验证通过，评审/提交可追溯；需要上线的改动已进入正确环境并完成业务验证，文档与入口记录一致；短期分支和临时运维状态已按实际情况整理。仅“代码已推送”或“Sync 成功”不能代替整个完成标准。
+
+## 参考来源与适用边界
+
+链接核对日期：2026-11-09。下面区分官方工作流、补充实践与本平台实现，不将它们合称为一个强制标准。
+
+| 来源 | 本文采用的内容 | 适用边界 |
+| --- | --- | --- |
+| [GitHub 官方：GitHub Flow](https://docs.github.com/en/get-started/using-github/github-flow) | 创建短期分支、提交、发起 PR、评审协作、合并与删除分支 | 本文分支协作的主要依据；没有强制 feature/fix 等前缀，也不规定使用 Argo CD |
+| [GitHub 官方：受保护分支](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches) | 通过分支规则要求评审、状态检查等合并条件 | 写进流程不等于仓库已启用；当前不宣称所有仓库已配置强制 PR 和 CI 门禁 |
+| [Microsoft：Git 分支策略指南](https://learn.microsoft.com/en-us/azure/devops/repos/git/git-branching-guidance) | 保持简单的主线、描述性的任务分支名、通过 PR 合并 | feature/、fix/、hotfix/、docs/ 等具体前缀与任务编号格式由本团队统一，不冒充 GitHub 的强制命名标准 |
+| [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/) | type、可选 scope 与摘要等提交信息结构 | 提交信息规范与分支命名、GitHub Flow 是不同层次；不会因格式正确自动获得合并或发布权限 |
+| [DORA：主干开发](https://dora.dev/capabilities/trunk-based-development/) | 小批量修改、频繁集成、缩短分支生命周期 | 作为工程实践补充；主干开发与 GitHub Flow 不是完全相同的模型，不把 DORA 的建议直接当作 GitHub Flow 的硬性步骤 |
+| [Argo CD：Sync Phases and Waves](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/) | 解释部署 Hook、阶段和同步批次，以及选择性同步的限制 | 属于合入后的部署实现，不属于 GitHub Flow；具体构建和发布顺序看目标应用配置 |
+| [本平台的镜像与 Argo CD 流程](/operations/deployment) | 固定源码版本、内网 Registry、清单生成、同步与验证 | 来自当前项目脚本和发布配置；Nacos、数据库、文件及凭据恢复仍按各自流程处理 |
+
+当前规范的组合是 **GitHub Flow 分支协作 + Conventional Commits 提交约定 + 本平台 GitOps 交付流程**。DORA 的小批量和频繁集成用于改进交付节奏；分支保护、CI 强制检查与自动发布是否真正生效，需要在各仓库和 Argo CD 中逐项核验。
