@@ -26,6 +26,7 @@ export default defineConfig({
         { text: 'Kubernetes 内部组件与拓扑', link: '/guide/kubernetes' },
         { text: '中间件与基础设施', link: '/guide/middleware' },
         { text: '组件交互流程', link: '/guide/interactions' },
+        { text: '标准开发流程', link: '/guide/development-workflow' },
         { text: '开发接入指南', link: '/guide/development-integration' },
         { text: '本地开发', link: '/guide/local-development' }
       ] },

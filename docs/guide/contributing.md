@@ -1,10 +1,12 @@
 # 维护这份文档
 
+跨项目的分支、评审、发布和回滚约定见 [标准开发流程](/guide/development-workflow)。本页补充文档仓库的维护要求。
+
 ## 写作与更新边界
 
 业务接口和 DTO 在服务仓库维护；本仓库维护跨项目说明、导航及可重复生成的接口索引。生成页面不要手工修改，改动源控制器后重新运行 `npm run api:sync`。
 
-新增服务时，同时更新 `docs/services/catalog.json` 和 `scripts/api-sources.json`，补齐项目、模块路径、源码默认端口、context-path、网关前缀及说明。生成器的 context-path 配置是显式输入，服务调整前缀后需同步维护。
+新增服务时维护 `docs/services/catalog.json` 与项目分组 `docs/services/groups.json`；需要纳入控制器索引的后端还应更新 `scripts/api-sources.json`，补齐项目、模块路径、源码默认端口、context-path、网关前缀及说明。生成器的 context-path 配置是显式输入，服务调整前缀后需同步维护。
 
 ## 提交前检查
 
