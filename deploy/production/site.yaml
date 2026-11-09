@@ -19,7 +19,7 @@ spec:
         - name: alisa-docs-registry-auth
       containers:
         - name: docs
-          image: registry.kind.internal:5000/alisa-docs:src-230a7eab0e92
+          image: registry.kind.internal:5000/alisa-docs:src-25e6a431ae2f
           ports:
             - name: http
               containerPort: 8080
