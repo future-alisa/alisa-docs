@@ -1,6 +1,6 @@
 # 租户管理办法
 
-租户能力由 alisa-user 承载。此页根据当前源码说明流程；本次匿名探测得到租户能力 API 401、OAuth 租户页面 403，尚未用真实用户验证线上租户操作。不要把以下能力写成已对所有线上客户端启用。
+业务租户由 alisa-user 承载。管理员可在 Alisa Admin 管理租户、成员、应用及资源权限。
 
 ## 三种“租户”不要混用
 
@@ -16,11 +16,10 @@
 | --- | --- |
 | 业务租户 API 根地址 | `https://alisa.vip.cpolar.cn/alisa-gateway/api/v1/user/tenants` |
 | 租户能力探测 | `GET https://alisa.vip.cpolar.cn/alisa-gateway/api/v1/user/tenancy`；需要第一方登录 token，成功后查看 `enabled` |
-| 源码中的 OAuth 租户页面 | `https://alisa.vip.cpolar.cn/alisa-gateway/oauth/tenants`；本次为 403，不作为已可用后台推荐 |
-| 独立身份管理控制台 | alisa-cloud 的 `alisa-admin-web`；尚未在本次部署清单中发现对应生产服务和域名 |
+| 身份与租户控制台 | [Alisa Admin](https://alisa.vip.cpolar.cn/admin/) |
 | 平台资源规划 | [Alisa Portal](https://alisa.vip.cpolar.cn/)；仍使用独立管理员令牌 |
 
-启用业务租户前，需要发布包含租户接口的账号服务版本、完成 `oauth.sql` / `tenant.sql` 表结构迁移，并配套配置 `TENANCY_ENABLED`、`OAUTH_ENABLED`、`AUTHORIZATION_ENABLED`、应用 scope 目录和授权提供者。源码默认关闭这些可选能力；本次不会修改开关、执行迁移或轮换密钥。
+启用业务租户前，需要发布包含租户接口的账号服务版本、完成 `oauth.sql` / `tenant.sql` 表结构迁移，并配套配置 `TENANCY_ENABLED`、`OAUTH_ENABLED`、`AUTHORIZATION_ENABLED`、应用 scope 目录和授权提供者。新环境应在迁移完成后核对这些开关。应用审批与资源授权流程见 [OAuth2 接入与联调](/operations/oauth2)。
 
 ## 角色规则
 

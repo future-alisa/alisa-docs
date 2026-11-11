@@ -1,6 +1,6 @@
 # Science Community API 与应用
 
-项目：[ScienceCommunity](https://github.com/future-alisa/ScienceCommunity)。当前 Argo CD 应用 `science-community` 读取 `codex/k8s-deploy` 分支的 `deploy/kubernetes`，运行在同名命名空间。2026-11-07 核验 web、community、transfer 三个 Deployment 均 1/1 就绪。
+项目为 [ScienceCommunity](https://github.com/future-alisa/ScienceCommunity)。Argo CD 应用与命名空间均为 `science-community`，部署清单位于 `deploy/kubernetes`。
 
 ## 统一服务概览
 
@@ -30,6 +30,14 @@
 | 聊天连接探测 | `GET https://alisa.vip.cpolar.cn/science-chat/ws/info` | 只验证 SockJS 元信息，不验证登录或消息投递 |
 
 社区的持久化频道讨论 API 与 transfer 的旧 STOMP 通道是不同实现。`/science-chat` 当前直达 transfer，不自动经过 Spring Gateway 的 JWT 校验；上线客户端需单独验证会话身份、授权和订阅范围。完整控制器索引见 [社区资源](/api/generated/community) 与 [聊天/在线状态](/api/generated/transfer)。
+
+## Alisa OAuth2 登录与 API
+
+打开 [社区登录页](https://alisa.vip.cpolar.cn/science/signin)，点击「使用 Alisa 账号继续」。网站用授权码和 PKCE S256 登录，回调为 `https://alisa.vip.cpolar.cn/science/auth/oauth/callback`。社区沿用 Alisa 的原用户 ID 关联已有数据。
+
+第三方使用自己的应用登记和用户令牌，调用 `/science/community-api` 下的接口。读取用 `science-community:community:read`，写入用 `science-community:community:write`。服务端同时检查租户资源权限及社区角色。可以先调用 `GET /science/community-api/auth/profile` 验证令牌对应的身份，再测试自己的社区列表。公开社区列表可匿名访问。旧 transfer 聊天链路需独立验证。
+
+Web 从 `science-oauth-web` 读取 `ALISA_OAUTH_ISSUER`、`ALISA_OAUTH_CLIENT_ID`、`ALISA_OAUTH_REDIRECT_URI` 和 `ALISA_OAUTH_SCOPES`。社区后端从服务端配置读取 issuer、introspection 和资源判定地址，以及验证凭据。变量名及部署示例见 [网站部署说明](https://github.com/future-alisa/ScienceCommunity/tree/main/App#readme)；通用步骤见 [OAuth2 接入与联调](/operations/oauth2)。
 
 ## 权限与请求示例
 
@@ -91,4 +99,4 @@ COMMUNITY_API_PROXY_TARGET=http://community:9091/community
 
 ## 本次验证边界
 
-已验证用户站、社区管理页面、公开社区列表接口与 SockJS info 可达。未使用真实用户执行登录、社区成员变更、文件上传或消息发送，不能把匿名探测当成这些操作已经联调通过。S3 凭据、JWT_SECRET、数据库配置只通过服务端配置维护。
+已验证统一登录入口能跳到 Alisa 登录页、公开社区列表可达，以及受保护身份接口对无效令牌返回 401。真实账号首次授权后的回跳、社区写入和消息收发需分别验证。

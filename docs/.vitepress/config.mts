@@ -44,6 +44,7 @@ export default defineConfig({
         { text: '存储接入', link: '/operations/storage' },
         { text: '数据接入', link: '/operations/data' },
         { text: '认证与授权及服务地址', link: '/operations/authentication' },
+        { text: 'OAuth2 接入与联调', link: '/operations/oauth2' },
         { text: '租户管理办法', link: '/operations/tenancy' },
         { text: '配置归属与对照', link: '/operations/configuration' },
         { text: '镜像与 Argo CD', link: '/operations/deployment' },
