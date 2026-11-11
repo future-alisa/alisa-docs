@@ -6,7 +6,7 @@ SmallOKR 将目标、阶段成果、待办与跟踪作为一个业务项目介�
 
 公共网关基址：`https://alisa.vip.cpolar.cn/alisa-gateway`。
 
-当前网关已有 SmallOKR 路由，但最近的实际 Deployment 清单未发现这三个后端。下面给出的是已配置路由对应的完整调用地址，不宣称它们目前可返回真实业务数据；首次联调先确认后端部署与 Nacos 注册。
+SmallOKR 的移动端联调应用使用 Alisa OAuth2。目标读取入口已验证无令牌时返回 401。出现 503 时，应检查具体后端部署与 Nacos 注册。
 
 | 资源组 | 完整服务根地址 | 后端 |
 | --- | --- | --- |
@@ -35,6 +35,10 @@ SmallOKR 将目标、阶段成果、待办与跟踪作为一个业务项目介�
 所有受保护请求传 `Authorization: Bearer ...`。SmallOKR 的资源 applicationId 为 `smallokr`，和微服务注册名不同；委托场景的 scope 按服务器目录采用 `smallokr:资源:动作`，例如已在目录配置时的 `smallokr:todo:read`，不能仅凭字符串自行获得授权。
 
 第一方用户、用户委托应用和后台 machine 应用是不同身份。除了 scope，还执行具体资源权限与数据归属检查。租户模式需要相应表结构、资源服务配置及租户 token 一起启用，见 [认证与授权](/operations/authentication)、[租户管理办法](/operations/tenancy)。
+
+## 移动端 OAuth2 联调
+
+在 Alisa Admin 的目标租户批准 `smallokr:target:read`，并核对测试账号的成员和资源授权。Bruno 选择 Authorization Code，启用 PKCE S256，使用登记的回调 `com.sunyubo.smallokr:/oauth2/callback`。取得新令牌后，先验证 `GET /alisa-gateway/target-service/api/v1/target/get`。切换账号时清除 Bruno 的令牌缓存。待办与阶段成果按各自资源 scope 另行申请。授权和令牌端点见 [OAuth2 接入与联调](/operations/oauth2)。
 
 ## 请求示例
 

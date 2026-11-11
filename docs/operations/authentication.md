@@ -38,28 +38,11 @@ curl -H "Authorization: Bearer $ACCESS_TOKEN"   'https://alisa.vip.cpolar.cn/ali
 
 授权判定请求包含 `applicationId`、`resourceType`、`resourceId`、`action`。例如 SmallOKR 的 applicationId 是 `smallokr`，不能误写成 target-service。权限目录以服务当前配置为准，不套用 Microsoft Graph 的权限名称。
 
-## OAuth 与管理页面当前状态
+## OAuth2 与管理入口
 
-| 候选地址 | 本次匿名响应 |
-| --- | --- |
-| `https://alisa.vip.cpolar.cn/alisa-gateway/login` | 403 |
-| `https://alisa.vip.cpolar.cn/alisa-gateway/oauth/tenants` | 403 |
-| `https://alisa.vip.cpolar.cn/alisa-gateway/oauth/apps` | 403 |
-| `https://alisa.vip.cpolar.cn/alisa-gateway/.well-known/oauth-authorization-server` | 403，尚不能取得已验证的 issuer / discovery 配置 |
-| `https://alisa.vip.cpolar.cn/oauth/tenants` | 404；不能省掉前缀后误进 Portal |
+生产环境的 OAuth2 issuer 为 `https://alisa.vip.cpolar.cn/admin/auth`。管理员在 [Alisa 管理控制台](https://alisa.vip.cpolar.cn/admin/) 管理成员、应用审批和资源授权。浏览器登录、授权码交换、令牌验证和应用测试见 [OAuth2 接入与联调](/operations/oauth2)。
 
-源码有 `oauth2/authorize`、`oauth2/token`、`oauth2/introspect` 等协议端点和 OAuth 页面，但当前入口探测不能证明它们已部署启用。`AUTHORIZATION_ENABLED`、`OAUTH_ENABLED`、`TENANCY_ENABLED` 默认关闭，启用还要求对应源码版本、表结构、应用目录、协议参数和资源客户端配置。
-
-部署 OAuth 时需统一 HTTPS issuer、discovery 返回端点、登录页绝对路径、同意页面、redirect_uri 及代理前缀。源码页面中存在 `/login`、`/oauth/...` 的根路径链接，必须验证经过外部前缀后的跳转是否仍回到账号服务。不能只因某个 URL 返回 HTML 就认定授权码流程正确。资源服务器的 introspection 配置也应满足现有 HTTPS 校验规则，不把上面的集群 HTTP 地址直接当成可忽略 TLS 的 OAuth 配置。
-
-## 四种后台的边界
-
-| 管理界面 | 地址 / 状态 | 身份体系 |
-| --- | --- | --- |
-| 平台资源门户 | [https://alisa.vip.cpolar.cn/](https://alisa.vip.cpolar.cn/) | 独立 Portal API_TOKEN，不是业务 JWT |
-| 社区管理 | [https://alisa.vip.cpolar.cn/science/community/settings](https://alisa.vip.cpolar.cn/science/community/settings) | 业务登录及社区拥有者/管理员权限 |
-| 身份与租户 React 控制台 | alisa-cloud/alisa-admin-web，尚未发现生产域名和 Deployment | 调用第一方 Bearer 管理 API；不新增管理后端 |
-| OAuth 用户授权页面 | 上表的 /alisa-gateway/oauth/... 候选地址，当前 403 | 账号服务自己的浏览器登录会话及 CSRF 保护 |
+平台资源门户使用独立管理凭据。社区管理入口位于 [Science Community](/services/science-community)，权限由社区角色决定。
 
 ## 公开路径和 delegated-ready
 

@@ -23,6 +23,8 @@
 
 门户管理界面与 [Science Community 社区管理](/services/science-community) 是两套不同用途的后台。门户的 Argo CD、Nacos、Traefik 等目录链接只是入口导航，目标服务仍执行自己的登录与访问控制。
 
+统一账号、OAuth2 应用审批和资源授权由 [Alisa Admin](https://alisa.vip.cpolar.cn/admin/) 管理，接入流程见 [OAuth2 接入与联调](/operations/oauth2)。
+
 ## 服务目录与真实基础设施的边界
 
 目录保存名称、分类、HTTP(S) 地址和说明，登记或移除记录不会部署、删除 Kubernetes 服务。当前 API 只有登记和移除操作，没有目录条目更新接口；更改已有条目时先登记新值、确认保存成功，再移除旧记录，避免先删后加丢失入口。
